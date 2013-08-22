@@ -34,6 +34,8 @@ Padrino.configure_apps do
   set :staff_consumer_key, 'qzvmxikmupTYVkOcbO5OA'
   set :staff_access_token, '1685219768-cUJ1VjrORs2HDlKnENZY6ZMiDuvYsTCkDR59a1Q'
   set :staff_access_secret, 'SwBWwgevgtl1awPlw8kosEXTubhdmXbQNJ84RBlTIs'
+  set :pecafit_auth_consumer_key, 'xhAYZeA5luPW1TiBj40dA'
+  set :pecafit_auth_consumer_secret, 'OCsuMUCG2ty7Iz7SB8CLt00D8NDBW0EQBStuDAN64w'
 end
 
 # Mounts the core application for this project

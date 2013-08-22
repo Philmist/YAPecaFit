@@ -22,19 +22,17 @@ Yapecafit::App.controllers :main do
   # end
   
   get :index, :map => '/' do
-    cl = Twitter::Client.new(
-      :consumer_key => settings.staff_consumer_key,
-      :consumer_secret => settings.staff_consumer_secret,
-      :oauth_token => settings.staff_access_token,
-      :oauth_token_secret => settings.staff_access_secret
-    )
-    res = ""
-    for i in cl.mentions_timeline(:count => 200)
-      res = res + i.text + "from " + i.user.name
-      res = res + "\n"
-    end
-    res
-    #render 'main/index'
+    render 'main/index'
+  end
+
+  get :user, :map => '/user' do
+    content_type :text
+    current_account.to_yaml
+  end
+
+  get :destroy, :map => '/logout' do
+    set_current_account(nil)
+    redirect url(:main, :index)
   end
 
 end

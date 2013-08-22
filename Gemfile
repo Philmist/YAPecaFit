@@ -33,6 +33,8 @@ gem 'padrino', '0.11.3'
 #   gem 'padrino-' + g, '0.11.3'
 # end
 
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'twitter'
 gem 'moji'
 

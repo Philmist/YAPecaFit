@@ -1,0 +1,10 @@
+class Account
+  include MongoMapper::Document
+
+  # key <name>, <type>
+  key :name, String
+  key :role, String
+  key :uid, String
+  key :provider, String
+  timestamps!
+end
