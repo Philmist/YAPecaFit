@@ -1,0 +1,6 @@
+#name
+  %p= @name
+#weights
+  - @weights.each do |i|
+    %p= i[:weight].to_s + "kg at " + i[:datetime]
+

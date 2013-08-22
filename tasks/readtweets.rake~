@@ -1,0 +1,100 @@
+require 'twitter'
+require 'moji'
+require 'time'
+require 'mongo_mapper'
+
+task :readbody => :environment do
+
+  def str_to_weight(s)
+    t = Moji.zen_to_han(s)
+    if /(\d+\.?\d*)\s*[Kk][Gg]/ =~ t
+      return Regexp.last_match[0].to_f
+    else
+      return nil
+    end
+  end
+
+  def str_to_height(s)
+    t = Moji.zen_to_han(s)
+    if /(\d+\.?\d*)\s*[Cc][Mm]/ =~ t
+      return Regexp.last_match[0].to_f
+    else
+      return nil
+    end
+  end
+
+  cl = Twitter::Client.new(
+    :consumer_key => "qzvmxikmupTYVkOcbO5OA",
+    :consumer_secret => "ZVbyPXNjITKhOLDcewboz4H7fjFD6qHUga2TBKVKcGs",
+    :oauth_token => "1685219768-cUJ1VjrORs2HDlKnENZY6ZMiDuvYsTCkDR59a1Q",
+    :oauth_token_secret => "SwBWwgevgtl1awPlw8kosEXTubhdmXbQNJ84RBlTIs"
+  )
+  puts "Count: " + Getlog.count.to_s + "\n"
+  if Getlog.count > 300
+    Getlog.sort(:order => :created_at.desc).skip(300).destroy
+  end
+  log_last = Getlog.last(:order => :created_at.asc)
+  unless log_last
+    puts "Database_Getlog : nil\n"
+  else
+    puts "Database_Getlog : " + log_last.tweet_id.to_s + "\n"
+  end
+  since = log_last.tweet_id if log_last
+  unless since
+    since = 1  # from start
+  end
+  mentions = cl.mentions_timeline(:since_id => since)
+  for i in mentions.reverse
+    res = i.text + " from " + i.user.name + "(" + i.user.id.to_s + ")" + " : " + i.id.to_s + "\n"
+    unless str_to_weight(i.text) or str_to_height(i.text)
+      puts res
+      next
+    end
+    if str_to_height(i.text)
+      res = res + str_to_height(i.text).to_s + "cm "
+      unless User.first(:twitter_id => i.from_user_id)  # New User
+        data = User.new(:twitter_id => i.from_user_id,
+                        :username => i.from_user_name,
+                        :height => str_to_height(i.text),
+                        :comment => "")
+        c = Weights.new(:twitter_id => i.from_user_id,
+                        :datetime => i.created_at.to_s,
+                        :weight => str_to_weight(i.text),
+                        :tweet_id => i.id,
+                        :user => data )
+        if data.save and c.save
+          res = res + "(N) " + str_to_weight(i.text).to_s + "kg (N)"
+        end
+      else  # Exist User
+        if User.set({:twitter_id => i.from_user_id}, :username => i.from_user_name, :height => str_to_height(i.text))
+          res = res + "(U) "
+        end
+      end
+    elsif str_to_weight(i.text)
+      res = res + str_to_weight(i.text).to_s + "kg "
+      unless User.last(:twitter_id => i.from_user_id)
+        res = res + "(n) "
+      else
+        c = User.last(:twitter_id => i.from_user_id)
+        data = Weights.new(:twitter_id => i.from_user_id,
+                           :datetime => i.created_at.to_s,
+                           :weight => str_to_weight(i.text),
+                           :tweet_id => i.id,
+                           :user => c )
+        if data.save
+          res = res + "(S) "
+        end
+      end
+    end
+    res = res + "\n"
+    puts res
+  end
+  puts since.to_s + "\n"
+  if mentions[-1]
+    last_log = Getlog.new(:tweet_id => mentions[0].id)
+    if last_log.save
+      puts "Last Twitter ID Saved!\n"
+    end
+  end
+end
+

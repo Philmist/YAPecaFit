@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %title= [@title, "YetAnotherPecaFit(YAPecaFit)"].compact.join("|")
+    =yield_content :include
+  %body
+    #header
+      %h1= @title
+    #footer
+      Copyright YAPecaFit Staff
+
+

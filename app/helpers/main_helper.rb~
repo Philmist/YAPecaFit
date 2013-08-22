@@ -1,0 +1,25 @@
+# Helper methods defined here can be accessed in any controller or view in the application
+require 'moji'
+
+Yapecafit::App.helpers do
+  # def simple_helper_method
+  #  ...
+  # end
+  def str_to_weight(s)
+    t = Moji.zen_to_han(s)
+    if /(\d+\.?\d*)\s*[Kk][Gg]/ =~ t
+      return Regexp.last_match[0].to_f
+    else
+      return nil
+    end
+  end
+
+  def str_to_height(s)
+    t = Moji.zen_to_han(s)
+    if /(\d+\.?\d*)\s*[Cc][Mm]/ =~ t
+      return Regexp.last_match[0].to_f
+    else
+      return nil
+    end
+  end
+end

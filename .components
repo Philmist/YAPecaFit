@@ -1,0 +1,9 @@
+---
+:orm: mongomapper
+:test: none
+:mock: none
+:script: jquery
+:renderer: haml
+:stylesheet: sass
+:namespace: Yapecafit
+:migration_format: number
