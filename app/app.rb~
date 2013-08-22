@@ -4,6 +4,7 @@ module Yapecafit
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
+    register Padrino::Admin::AccessControl
 
     enable :sessions
 
@@ -58,5 +59,20 @@ module Yapecafit
     #     render 'errors/505'
     #   end
     #
+    #
+    use OmniAuth::Builder do
+      provider :twitter, setting.pecafit_auth_consumer_key, setting.pecafit_auth_consumer_secret
+    end
+
+    set :login_page, "/"
+
+    access_control.roles_for :any do |role|
+      role.protect "/user"
+      role.protect "/admin"
+    end
+
+    access_control.roles_for :users do |role|
+      role.allow "/user"
+    end
   end
 end
