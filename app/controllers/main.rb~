@@ -44,7 +44,7 @@ Yapecafit::App.controllers :main do
       account.save
     end
     set_current_account(account)
-    redirect "http://" + request.env["HTTP_POST"] + url(:main, :user)
+    redirect "http://" + request.env["HTTP_HOST"] + url(:main, :user)
   end
 
 end
