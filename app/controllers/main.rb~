@@ -33,8 +33,10 @@ Yapecafit::App.controllers :main do
       for i in Weights.find(:twitter_id => current_account.uid.to_i)
         res = res + "Weight: " + i.weight + "\n"
       end
+      res
+    else
+      current_account.to_yaml
     end
-    res
   end
 
   get :destroy, :map => '/logout' do
