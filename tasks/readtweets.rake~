@@ -52,12 +52,12 @@ task :readbody => :environment do
     end
     if str_to_height(i.text)
       res = res + str_to_height(i.text).to_s + "cm "
-      unless User.first(:twitter_id => i.from_user_id)  # New User
-        data = User.new(:twitter_id => i.from_user_id,
-                        :username => i.from_user_name,
+      unless User.first(:twitter_id => i.user.id)  # New User
+        data = User.new(:twitter_id => i.user.id,
+                        :username => i.user.name,
                         :height => str_to_height(i.text),
                         :comment => "")
-        c = Weights.new(:twitter_id => i.from_user_id,
+        c = Weights.new(:twitter_id => i.user.id,
                         :datetime => i.created_at.to_s,
                         :weight => str_to_weight(i.text),
                         :tweet_id => i.id,
@@ -66,17 +66,17 @@ task :readbody => :environment do
           res = res + "(N) " + str_to_weight(i.text).to_s + "kg (N)"
         end
       else  # Exist User
-        if User.set({:twitter_id => i.from_user_id}, :username => i.from_user_name, :height => str_to_height(i.text))
+        if User.set({:twitter_id => i.user.id}, :username => i.user.name, :height => str_to_height(i.text))
           res = res + "(U) "
         end
       end
     elsif str_to_weight(i.text)
       res = res + str_to_weight(i.text).to_s + "kg "
-      unless User.last(:twitter_id => i.from_user_id)
+      unless User.last(:twitter_id => i.user.id)
         res = res + "(n) "
       else
-        c = User.last(:twitter_id => i.from_user_id)
-        data = Weights.new(:twitter_id => i.from_user_id,
+        c = User.last(:twitter_id => i.user.id)
+        data = Weights.new(:twitter_id => i.user.id,
                            :datetime => i.created_at.to_s,
                            :weight => str_to_weight(i.text),
                            :tweet_id => i.id,

@@ -24,10 +24,10 @@ task :readbody => :environment do
   end
 
   cl = Twitter::Client.new(
-    :consumer_key => "qzvmxikmupTYVkOcbO5OA",
-    :consumer_secret => "ZVbyPXNjITKhOLDcewboz4H7fjFD6qHUga2TBKVKcGs",
-    :oauth_token => "1685219768-cUJ1VjrORs2HDlKnENZY6ZMiDuvYsTCkDR59a1Q",
-    :oauth_token_secret => "SwBWwgevgtl1awPlw8kosEXTubhdmXbQNJ84RBlTIs"
+    :consumer_key => ENV['STAFF_CONS_KEY'],
+    :consumer_secret => ENV['STAFF_CONS_SEC'],
+    :oauth_token => ENV['STAFF_ACC_KEY'],
+    :oauth_token_secret => ENV['STAFF_ACC_SEC']
   )
   puts "Count: " + Getlog.count.to_s + "\n"
   if Getlog.count > 300

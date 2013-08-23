@@ -30,12 +30,12 @@ Padrino.configure_apps do
   set :session_secret, '0fbb1d661a560121ebd6df57d7b901be89b216f227a7fedb5f0722839cf4534e'
   set :protection, true
   set :protect_from_csrf, true
-  set :staff_consumer_secret, 'ZVbyPXNjITKhOLDcewboz4H7fjFD6qHUga2TBKVKcGs'
-  set :staff_consumer_key, 'qzvmxikmupTYVkOcbO5OA'
-  set :staff_access_token, '1685219768-cUJ1VjrORs2HDlKnENZY6ZMiDuvYsTCkDR59a1Q'
-  set :staff_access_secret, 'SwBWwgevgtl1awPlw8kosEXTubhdmXbQNJ84RBlTIs'
-  set :pecafit_auth_consumer_key, 'xhAYZeA5luPW1TiBj40dA'
-  set :pecafit_auth_consumer_secret, 'OCsuMUCG2ty7Iz7SB8CLt00D8NDBW0EQBStuDAN64w'
+  set :staff_consumer_secret, ENV['STAFF_CONS_SEC']
+  set :staff_consumer_key, ENV['STAFF_CONS_KEY']
+  set :staff_access_token, ENV['STAFF_ACC_KEY']
+  set :staff_access_secret, ENV['STAFF_ACC_SEC']
+  set :pecafit_auth_consumer_key, ENV['PF_CONS_KEY']
+  set :pecafit_auth_consumer_secret, ENV['PF_CONS_SEC']
 end
 
 # Mounts the core application for this project
