@@ -5,7 +5,7 @@ class User
 
   # key <name>, <type>
   key :username, String
-  key :twitter_id, Integer
+  key :twitter_id, Integer, :required => true
   key :height, Float
   key :comment, String
   timestamps!
@@ -16,10 +16,10 @@ class Weights
   include MongoMapper::Document
 
   # key <name>, <type>
-  key :twitter_id, Integer
+  key :twitter_id, Integer, :required => true
   key :datetime, String
-  key :weight, Float
-  key :tweet_id, Integer
+  key :weight, Float, :required => true
+  key :tweet_id, Integer, :required => true
   key :comment, String
   belongs_to :user, :class_name => "User"
 end

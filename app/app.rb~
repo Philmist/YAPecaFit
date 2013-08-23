@@ -61,7 +61,7 @@ module Yapecafit
     #
     #
     use OmniAuth::Builder do
-      provider :twitter, setting.pecafit_auth_consumer_key, setting.pecafit_auth_consumer_secret
+      provider :twitter, App.pecafit_auth_consumer_key, App.pecafit_auth_consumer_secret
     end
 
     set :login_page, "/"
