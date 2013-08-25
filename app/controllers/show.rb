@@ -20,10 +20,10 @@ Yapecafit::App.controllers :show do
   # end
   
   get :index, :with => :id do
-    puts params[:id]
     @user = User.first(:twitter_id => params[:id].to_i)
     if @user
       @name = @user[:username]
+      @twitter_id = @user[:twitter_id]
       @weights = Weights.all(:twitter_id => @user[:twitter_id], :order => :tweet_id.asc)
       render 'show/user'
     end

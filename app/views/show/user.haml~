@@ -1,6 +1,6 @@
 -# coding: utf-8
 
-%p#name= @name
+%p#name= @name + "さん"
 #weight_list
   %ul
     - @weights.each do |i|
