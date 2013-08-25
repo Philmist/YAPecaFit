@@ -1,6 +1,7 @@
 require 'twitter'
 require 'moji'
 require 'time'
+require 'date'
 require 'mongo_mapper'
 
 task :readbody => :environment do
@@ -22,6 +23,11 @@ task :readbody => :environment do
       return nil
     end
   end
+
+  def utc_to_jststr(t)
+    DateTime.rfc_2822(t.rfc_2822).new_offset("+0900").rfc_2822
+  end
+
 
   cl = Twitter::Client.new(
     :consumer_key => ENV['STAFF_CONS_KEY'],
@@ -58,7 +64,7 @@ task :readbody => :environment do
                         :height => str_to_height(i.text),
                         :comment => "")
         c = Weights.new(:twitter_id => i.user.id,
-                        :datetime => i.created_at.to_s,
+                        :datetime => utc_to_jststr( i.created_at ),
                         :weight => str_to_weight(i.text),
                         :tweet_id => i.id,
                         :user => data )
@@ -77,7 +83,7 @@ task :readbody => :environment do
       else
         c = User.last(:twitter_id => i.user.id)
         data = Weights.new(:twitter_id => i.user.id,
-                           :datetime => i.created_at.to_s,
+                           :datetime => utc_to_jststr( i.created_at ),
                            :weight => str_to_weight(i.text),
                            :tweet_id => i.id,
                            :user => c )
