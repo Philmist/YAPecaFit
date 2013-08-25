@@ -50,10 +50,10 @@ Yapecafit::App.controllers :main do
                            :uid => auth["uid"])
     unless account
       account = Account.create_with_omniauth(auth)
-      tmpcl = Twitter::Client.new(:consumer_secret => YAPecafit::App.staff_consumer_secret,
-                                  :consumer_key => YAPecafit::App.staff_consumer_key,
-                                  :oauth_token => YAPecafit::App.staff_access_token,
-                                  :oauth_secret => YAPecafit::App.staff_access_secret)
+      tmpcl = Twitter::Client.new(:consumer_secret => Yapecafit::App.staff_consumer_secret,
+                                  :consumer_key => Yapecafit::App.staff_consumer_key,
+                                  :oauth_token => Yapecafit::App.staff_access_token,
+                                  :oauth_secret => Yapecafit::App.staff_access_secret)
       account.name = tmpcl.user(account.uid) ? tmpcl.user(account.uid).name : ""
       account.save
     end
