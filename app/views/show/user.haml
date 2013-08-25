@@ -1,8 +1,11 @@
 -# coding: utf-8
 
-%ul
-  %li#name= @name + "さん"
-  %li#twitter_uid= @twitter_id.to_s
+%h1
+  %span#name= @name + "さん"
+  (
+  %span#twitter_uid= @twitter_id.to_s
+  )
+  の体重推移
 
 %noscript
   %ul#weight_list
