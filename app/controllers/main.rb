@@ -33,7 +33,7 @@ Yapecafit::App.controllers :main do
     if Weights.first(:twitter_id => current_account.uid.to_i)
       @weight_list = Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
     end
-    @title = self.current_account.name ? (current_account.name + "さんの") : "名無しさんの" + "記録"
+    @title = (self.current_account.name ? (current_account.name + "さんの") : "名無しさんの" ) + "記録"
     @user_twitter_id = current_account.uid.to_s
     render 'main/user'
   end
