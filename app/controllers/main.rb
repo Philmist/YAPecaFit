@@ -26,7 +26,6 @@ Yapecafit::App.controllers :main do
   end
 
   get :user, :map => '/user' do
-    content_type :text
     #current_account.to_yaml
     res = ""
     @weight_list = []
