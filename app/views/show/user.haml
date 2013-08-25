@@ -8,4 +8,6 @@
       %li= i[:weight].to_s + "kg at " + i[:datetime]
 #graph
 
+- content_for :include do
+  =javascript_include_tag 'weight_graph'
 
