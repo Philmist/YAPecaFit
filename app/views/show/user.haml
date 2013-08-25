@@ -1,13 +1,48 @@
 -# coding: utf-8
 
-%p#name= @name + "さん"
-%p#twitter_uid= @twitter_id.to_s
+%ul
+  %li#name= @name + "さん"
+  %li#twitter_uid= @twitter_id.to_s
+
 %noscript
   %ul#weight_list
     - @weights.each do |i|
       %li= i[:weight].to_s + "kg at " + i[:datetime]
 #graph
 
-- content_for :include do
-  =javascript_include_tag 'weight_graph'
+  :javascript
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
+      }
+    });
+    $(document).ready(function () {
+      var opts = {
+        chart : {
+          renderTo : 'graph',  // render element id
+          type : 'spline',  // graph type
+        },
+        credits : {
+          enabled : false,
+        },
+        legend : {
+          layout : 'vertical',
+        },
+        title : {
+          text : '体重の変化',
+        },
+        xAxis : {
+          title : {
+            text : '日付',
+          },
+          type : 'datetime',
+        },
+        series : [{}],
+      };
+      var url = '/api/weight/' + document.getElementById("twitter_uid");
+      $.getJSON(url, function(data) {
+        opts.series[0].data = data;
+        var chart = new Highcharts.Chart(opts);
+      });
+    });
 
