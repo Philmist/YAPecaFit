@@ -1,6 +1,8 @@
-#name
-  %p= @name
-#weights
-  - @weights.each do |i|
-    %p= i[:weight] kg at i[:datetime]
+-# coding: utf-8
+
+%p#name= @name
+#weight_list
+  %ul
+    - @weights.each do |i|
+      %li= i[:weight].to_s + "kg at " + i[:datetime]
 
