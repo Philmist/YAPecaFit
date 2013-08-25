@@ -35,7 +35,7 @@ Yapecafit::App.controllers :main do
     end
     @title = self.current_account.name ? (current_account.name + "さんの") : "名無しさんの" + "記録"
     @user_twitter_id = current_account.uid.to_s
-    #render 'main/user'
+    render 'main/user'
   end
 
   get :destroy, :map => '/logout' do
