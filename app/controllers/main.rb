@@ -28,14 +28,14 @@ Yapecafit::App.controllers :main do
   end
 
   get :user, :map => '/user' do
-    #current_account.to_yaml
+    current_account.to_yaml
     @weight_list = []
-    if Weights.first(:twitter_id => self.current_account.uid.to_i)
+    if Weights.first(:twitter_id => current_account.uid.to_i)
       @weight_list = Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
     end
     @title = self.current_account.name ? (current_accouunt.name + "さんの") : "名無しさんの" + "記録"
-    @user_twitter_id = self.current_account.twitter_id.to_s
-    render 'main/user'
+    @user_twitter_id = current_account.twitter_id.to_s
+    #render 'main/user'
   end
 
   get :destroy, :map => '/logout' do
