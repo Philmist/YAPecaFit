@@ -10,7 +10,7 @@ $(document).ready(function () {
   var opts = {
     chart : {
       renderTo : 'graph',  // render element id
-      type : 'bar',  // graph type
+      type : 'spline',  // graph type
     },
     credits : {
       enabled : false,
@@ -25,6 +25,7 @@ $(document).ready(function () {
       title : {
         text : '日付',
       },
+      type : 'datetime',
     },
     series : [{}],
   };

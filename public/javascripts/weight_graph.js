@@ -4,7 +4,7 @@ Highcharts.setOptions({
   global: {
     useUTC: false
   }
-};
+});
 
 $(document).ready(function () {
   var opts = {
