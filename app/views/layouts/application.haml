@@ -11,9 +11,11 @@
       %p#username
         - unless access_control.allowed?(current_account, '/user')
           =link_to('Twitter', '/auth/twitter')
-          ‚ÅƒƒOƒCƒ“‚·‚é
+          ã§ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹
         - else
-          ‚æ‚¤‚±‚»
+          ã‚ˆã†ã“ãã€
+          =current_account.name + "(" + current_account.uid.to_s + ")"
+          ã•ã‚“
     #main= yield
     #footer
       Copyright YAPecaFit Staff
