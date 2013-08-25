@@ -8,5 +8,4 @@
 
 %h2
   紹介URL
-%p
-  ="http://"+request.env["HTTP_HOST"]+url(:show, :index)+@user_twitter_id
+%p= "http://"+request.env["HTTP_HOST"]+url(:show, :index)+@user_twitter_id
