@@ -39,9 +39,9 @@
         },
         series : [[10,10]],
       };
-      //var url = '/api/weight/' + $("#twitter_uid")[0].text;
-      var url = '/api/weight/' + '88057717'; 
-      $.getJSON(url, function(data) {
+      var target_url = '/api/weight/' + $("#twitter_uid")[0].innerHTML;
+      //var url = '/api/weight/' + '88057717'; 
+      $.getJSON(target_url, function(data) {
         opts.series[0].data = data;
         var chart = new Highcharts.Chart(opts);
       });
