@@ -11,9 +11,11 @@
       %p#username
         - unless access_control.allowed?(current_account, '/user')
           =link_to('Twitter', '/auth/twitter')
-            でログインする
+          でログインする
         - else
-          ようこそ
+          ようこそ、
+          =current_account.name + "(" + current_account.uid.to_s + ")"
+          さん
     #main= yield
     #footer
       Copyright YAPecaFit Staff

@@ -14,7 +14,7 @@
           でログインする
         - else
           ようこそ、
-          =current_account.name + "(" + current_account.uid.to_s + ")"
+          =current_account.name ? current_account.name : "名無し" + "(" + current_account.uid.to_s + ")"
           さん
     #main= yield
     #footer
