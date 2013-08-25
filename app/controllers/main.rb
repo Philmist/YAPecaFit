@@ -33,7 +33,8 @@ Yapecafit::App.controllers :main do
       for i in Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
         res = res + "Weight: " + i.weight.to_s + " : " + i.tweet_id.to_s + "\n"
       end
-      res
+      current_account.to_yaml
+      #res
     else
       current_account.to_yaml
     end
