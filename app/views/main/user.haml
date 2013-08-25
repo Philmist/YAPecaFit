@@ -1,9 +1,9 @@
 -# coding: utf-8
 
 %h2
-  今までの記録
+  直近5回の記録
 %ul#weight_list
-  - for i in @weight_list
+  - for i in @weight_list[0, 5]
     %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
 
 %h2
