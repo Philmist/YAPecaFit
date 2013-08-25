@@ -15,9 +15,12 @@
         - else
           ようこそ、
           =current_account.name ? current_account.name : "名無し" + "(" + current_account.uid.to_s + ")"
-          さん
+          さん (
+          =link_to('ログアウト', '/logout')
+          )
     #main= yield
     #footer
-      Copyright YAPecaFit Staff
+      Copyright 
+      =link_to('YAPecaFit Staff', 'http://twitter.com/YAPecafit')
 
 

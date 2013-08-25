@@ -3,7 +3,7 @@
 !!! 5
 %html
   %head
-    %title= [@title, "YetAnotherPecaFit(YAPecaFit)"].compact.join("|")
+    %title= [@title, "YetAnotherPecaFit(YAPecaFit)"].compact.join(" | ")
     =yield_content :include
   %body
     #header
@@ -20,6 +20,7 @@
           )
     #main= yield
     #footer
-      Copyright YAPecaFit Staff
+      Copyright 
+      =link_to('YAPecaFit Staff', 'http://twitter.com/YAPecafit')
 
 

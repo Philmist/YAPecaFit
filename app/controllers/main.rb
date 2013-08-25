@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'twitter'
 
 Yapecafit::App.controllers :main do
@@ -22,16 +23,18 @@ Yapecafit::App.controllers :main do
   # end
   
   get :index, :map => '/' do
+    @title = "トップページ"
     render 'main/index'
   end
 
   get :user, :map => '/user' do
     #current_account.to_yaml
-    res = ""
     @weight_list = []
     if Weights.first(:twitter_id => current_account.uid.to_i)
       @weight_list = Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
     end
+    @title = current_account.name ? (current_accouunt.name + "さんの") : "名無しさんの" + "記録"
+    @user_twitter_id = current_account.twitter_id.to_s
     render 'main/user'
   end
 

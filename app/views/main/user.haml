@@ -1,7 +1,10 @@
 -# coding: utf-8
 
-%p 今までの記録
+%h2 今までの記録
 %ul#weight_list
   - for i in @weight_list
     %li.weight_items= i.weight.to_s + "kg at " + i.datetime ? i.datetime : "?"
 
+%h2 紹介URL
+%p
+  ="http://"+request.env["HTTP_HOST"]+url(:show, :index)+@user_twitter_id
