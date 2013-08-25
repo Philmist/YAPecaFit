@@ -54,7 +54,11 @@ Yapecafit::App.controllers :main do
                                   :consumer_key => Yapecafit::App.staff_consumer_key,
                                   :oauth_token => Yapecafit::App.staff_access_token,
                                   :oauth_secret => Yapecafit::App.staff_access_secret)
-      account.name = tmpcl.user(auth["uid"]) ? tmpcl.user(auth["uid"]).name : ""
+      begin
+        account.name = tmpcl.user(auth["uid"].to_i).name
+      rescue => e
+        account.name = ""
+      end
       account.save
     end
     set_current_account(account)
