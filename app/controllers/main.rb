@@ -29,14 +29,11 @@ Yapecafit::App.controllers :main do
     content_type :text
     #current_account.to_yaml
     res = ""
+    @weight_list = []
     if Weights.first(:twitter_id => current_account.uid.to_i)
-      for i in Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
-        res = res + "Weight: " + i.weight.to_s + " : " + i.tweet_id.to_s + "\n"
-      end
-      res
-    else
-      current_account.to_yaml
+      @weight_list = Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
     end
+    render 'main/user'
   end
 
   get :destroy, :map => '/logout' do

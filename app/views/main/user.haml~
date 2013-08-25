@@ -1,0 +1,5 @@
+-# coding: utf-8
+
+%ul#weight_list
+  - for i in @weight_list
+    %li.weight_items
