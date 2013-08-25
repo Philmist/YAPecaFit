@@ -27,14 +27,13 @@ Yapecafit::App.controllers :main do
 
   get :user, :map => '/user' do
     content_type :text
-    current_account.to_yaml
+    #current_account.to_yaml
     res = ""
     if Weights.first(:twitter_id => current_account.uid.to_i)
       for i in Weights.all(:twitter_id => current_account.uid.to_i, :order => :tweet_id.desc)
         res = res + "Weight: " + i.weight.to_s + " : " + i.tweet_id.to_s + "\n"
       end
-      current_account.to_yaml
-      #res
+      res
     else
       current_account.to_yaml
     end
