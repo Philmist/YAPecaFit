@@ -1,7 +1,0 @@
-class Getlog
-  include MongoMapper::Document
-
-  # key <name>, <type>
-  key :tweet_id, Integer
-  key :gettime, String
-end

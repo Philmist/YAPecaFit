@@ -39,7 +39,7 @@
         },
         series : [{}],
       };
-      var url = '/api/weight/' + document.getElementById("twitter_uid");
+      var url = '/api/weight/' + getElementById("twitter_uid");
       $.getJSON(url, function(data) {
         opts.series[0].data = data;
         var chart = new Highcharts.Chart(opts);
