@@ -6,6 +6,8 @@
     %title= [@title, "YetAnotherPecaFit(YAPecaFit)"].compact.join(" | ")
     =javascript_include_tag 'jquery'
     =javascript_include_tag 'highcharts/highcharts'
+    =javascript_include_tag 'bootstrap.min.js'
+    =stylesheet_link_tag 'bootstrap.min.css'
     =yield_content :include
   %body
     #header
