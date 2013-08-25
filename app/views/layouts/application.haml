@@ -6,25 +6,43 @@
     %title= [@title, "YetAnotherPecaFit(YAPecaFit)"].compact.join(" | ")
     =javascript_include_tag 'jquery'
     =javascript_include_tag 'highcharts/highcharts'
-    =javascript_include_tag 'bootstrap.min.js'
-    =stylesheet_link_tag 'bootstrap.min.css'
+    =javascript_include_tag 'bootstrap.min'
+    =stylesheet_link_tag 'bootstrap.min'
     =yield_content :include
   %body
     #header
-      %h1= @title
-      %p#username
-        - unless access_control.allowed?(current_account, '/user')
-          =link_to('Twitter', '/auth/twitter')
-          でログインする
-        - else
-          ようこそ、
-          =current_account.name ? current_account.name : "名無し" + "(" + current_account.uid.to_s + ")"
-          さん (
-          =link_to('ログアウト', '/logout')
-          )
-    #main= yield
+      %nav.navbar.navbar-default.navbar-static-top{:role => 'navigation'}
+        .navbar-header
+          %a.navbar-brand{:href => '/'}YAPecaFit
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          %ul.nav.navbar-nav
+            %li#nav_link_to_top
+              %a{:href => '/'}トップ
+            %li#nav_link_to_userpage
+              - unless access_control.allowed?(current_account, '/user')
+                %a{:href=>'#'}ユーザーページ
+              - else
+                %a{:href => '/user'}ユーザーページ
+          %ul.nav.navbar-nav.navbar-right
+            %p.navbar-text
+              - unless access_control.allowed?(current_account, '/user')
+                ログインしていません
+              - else
+                ようこそ、
+                =(current_account.name ? current_account.name : "名無し")
+                さん
+            %p.btn.btn-default.navbar-btn
+              - if access_control.allowed?(current_account, '/user')
+                %a{:href => '/logout'}ログアウト
+              - else
+                =link_to('Twitterでログイン', '/auth/twitter')
+    #main
+      .jumbotron
+        .container
+          =yield
     #footer
-      Copyright 
-      =link_to('YAPecaFit Staff', 'http://twitter.com/YAPecafit')
-
+      %footer
+        %p
+          Copyright 
+          =link_to('YAPecaFit Staff', 'http://twitter.com/YAPecafit')
 
