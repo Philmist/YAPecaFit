@@ -21,6 +21,7 @@ Yapecafit::App.controllers :project do
   
   get :index do
     @project = Project.all()
+    render 'project/index'
   end
 
   post :create do

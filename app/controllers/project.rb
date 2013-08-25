@@ -20,7 +20,7 @@ Yapecafit::App.controllers :project do
   # end
   
   get :index do
-    @project = Project.all()
+    @project = Project.all
     render 'project/index'
   end
 
