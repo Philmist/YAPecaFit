@@ -1,8 +1,8 @@
 require 'twitter'
 require 'moji'
-require 'time'
 require 'date'
 require 'mongo_mapper'
+require 'time'
 
 task :readbody => :environment do
 
@@ -25,7 +25,7 @@ task :readbody => :environment do
   end
 
   def utc_to_jststr(t)
-    DateTime.rfc_2822(t.rfc_2822).new_offset("+0900").rfc_2822
+    DateTime.rfc_2822( t.rfc2822 ).new_offset("+0900").rfc2822
   end
 
 
