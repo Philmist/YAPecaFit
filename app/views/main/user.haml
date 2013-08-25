@@ -7,6 +7,15 @@
     %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
 
 %h2
+  =@name + "さん"
+  (
+  %span#twitter_uid= @user_twitter_id
+  ) のグラフ
+
+- content_for :include do
+  =javascript_include_tag 'weight_graph'
+
+%h2
   紹介URL
 %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
 -#バグが出たのでとりあえず決めうち。
