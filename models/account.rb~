@@ -10,7 +10,7 @@ class Account
   def self.create_with_omniauth(auth)
     c = self.new(:provider => auth["provider"],
                  :uid => auth["uid"],
-                 :name => auth["name"],
+                 :name => auth["user_info"]["name"],
                  :role => "users")
     return c
   end
