@@ -1,0 +1,14 @@
+-# coding: utf-8
+%p てすと。
+
+- if @project and @project.length > 0
+  - for i in @project
+    %ul
+      %li= "プロジェクト名: " + @project.proj_name
+      %li= "作った人: " + @project.creator_twitter_name + " ( " + @project.creator_twitter_id.to_s + ")"
+      %li= "開始日: " + @project.startdate ? @project.startdate.to_s : "なし"
+      %li= "終了日: " + @project.enddate ? @project.enddate.to_s : "なし"
+- else
+  %p プロジェクトはありません
+
+

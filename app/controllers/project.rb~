@@ -19,5 +19,11 @@ Yapecafit::App.controllers :project do
   #   'Hello world!'
   # end
   
+  get :index do
+    @project = Project.all()
+  end
+
+  post :create do
+  end
 
 end

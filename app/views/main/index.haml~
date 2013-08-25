@@ -1,4 +1,7 @@
-%h1 Hello!
-%p Hello!
+-# coding: utf-8
+
+%p
+  =link_to('Twitter', '/auth/twitter')
+  でログインする
 
     

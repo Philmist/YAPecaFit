@@ -1,5 +1,8 @@
+-# coding: utf-8
+
 %p
-  Login with
-  =link_to('Twitter', '/auth/twitter')
+  - unless acesss_control.allowed?(current_account, '/user')
+    =link_to('Twitter', '/auth/twitter')
+    でログインする
 
     
