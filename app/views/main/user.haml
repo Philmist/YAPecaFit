@@ -3,5 +3,5 @@
 %p 今までの記録
 %ul#weight_list
   - for i in @weight_list
-    %li.weight_items= i.weight.to_i + "kg at " + i.datetime ? i.datetime + "?"
+    %li.weight_items= i.weight.to_i + "kg at " + i.datetime ? i.datetime : "?"
 
