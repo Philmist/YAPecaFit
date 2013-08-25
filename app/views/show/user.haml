@@ -1,7 +1,7 @@
 -# coding: utf-8
 
 %p#name= @name + "さん"
-%p#twitter_uid= "(" + @twitter_id.to_s + ")"
+%p#twitter_uid= @twitter_id.to_s
 %noscript
   %ul#weight_list
     - @weights.each do |i|
