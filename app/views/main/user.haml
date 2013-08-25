@@ -12,13 +12,16 @@
 - content_for :include do
   =javascript_include_tag 'weight_graph'
 
-%h2
-  直近5回の記録
-%ul#weight_list
-  - for i in @weight_list[0, 5]
-    %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
+.row
+  .col-md-8
+    %h2
+      直近5回の記録
+    %ul#weight_list
+      - for i in @weight_list[0, 5]
+        %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
 
-%h2
-  紹介URL
-%p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
--#バグが出たのでとりあえず決めうち。
+  .col-md-4
+    %h2
+      紹介URL
+    %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
+    -#バグが出たのでとりあえず決めうち。
