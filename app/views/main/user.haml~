@@ -1,5 +1,7 @@
 -# coding: utf-8
 
+%p ¡‚Ü‚Å‚Ì‹L˜^
 %ul#weight_list
   - for i in @weight_list
-    %li.weight_items
+    %li.weight_items= i.weight.to_i + "kg at " + i.datetime ? i.datetime + "?"
+
