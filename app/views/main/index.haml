@@ -1,7 +1,7 @@
 -# coding: utf-8
 
 %p
-  - unless acesss_control.allowed?(current_account, '/user')
+  - unless access_control.allowed?(current_account, '/user')
     =link_to('Twitter', '/auth/twitter')
     でログインする
 
