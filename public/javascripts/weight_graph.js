@@ -5,7 +5,6 @@ Highcharts.setOptions({
     useUTC: false
   }
 });
-
 $(document).ready(function () {
   var opts = {
     chart : {
@@ -27,13 +26,16 @@ $(document).ready(function () {
       },
       type : 'datetime',
     },
-    series : [{}],
+    yAxis : {
+      title : {
+        text : '体重'
+      },
+    },
+    series : [[0,0]],
   };
-
-  var url = '/api/weight/' + document.getElementById("twitter_uid");
-  $.getJSON(url, function(data) {
+  var target_url = '/api/weight/' + $("#twitter_uid")[0].innerHTML;
+  $.getJSON(target_url, function(data) {
     opts.series[0].data = data;
     var chart = new Highcharts.Chart(opts);
   });
 });
-
