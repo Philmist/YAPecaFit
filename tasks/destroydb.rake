@@ -23,6 +23,14 @@ task :destroydb => :environment do
     puts "failed.\n"
   end
 
+  puts "Destroy Twitter get log collection..."
+  if Getlog.destroy_all
+    puts "done.\n"
+  else
+    puts "failed.\n"
+  end
+
 end
+
 
 
