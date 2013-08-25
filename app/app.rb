@@ -5,6 +5,7 @@ module Yapecafit
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
+    register Padrino::Admin::Helpers
 
     enable :sessions
 
