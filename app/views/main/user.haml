@@ -1,20 +1,22 @@
 -# coding: utf-8
 
+.Jumbotron
+  .container
+    %h2
+      =@name + "さん"
+      (
+      %span#twitter_uid= @user_twitter_id
+      ) のグラフ
+    #graph
+
+- content_for :include do
+  =javascript_include_tag 'weight_graph'
+
 %h2
   直近5回の記録
 %ul#weight_list
   - for i in @weight_list[0, 5]
     %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
-
-%h2
-  =@name + "さん"
-  (
-  %span#twitter_uid= @user_twitter_id
-  ) のグラフ
-#graph
-
-- content_for :include do
-  =javascript_include_tag 'weight_graph'
 
 %h2
   紹介URL

@@ -1,11 +1,13 @@
 -# coding: utf-8
 
-%h2
-  %span#name= @name + "さん"
-  (
-  %span#twitter_uid= @twitter_id.to_s
-  )
-  の体重推移
+.Jumbotron
+  .container
+    %h2
+      %span#name= @name + "さん"
+      (
+      %span#twitter_uid= @twitter_id.to_s
+      )
+      の体重推移
 
 %noscript
   %ul#weight_list
