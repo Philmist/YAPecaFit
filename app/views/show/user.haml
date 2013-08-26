@@ -8,12 +8,12 @@
       %span#twitter_uid= @twitter_id.to_s
       )
       の体重推移
+    #graph
 
 %noscript
   %ul#weight_list
     - @weights.each do |i|
       %li= i[:weight].to_s + "kg at " + i[:datetime]
-#graph
 
 - content_for :include do
   =javascript_include_tag 'weight_graph'
