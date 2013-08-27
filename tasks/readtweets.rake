@@ -1,3 +1,4 @@
+# filecoding: utf-8
 require 'twitter'
 require 'moji'
 require 'date'
@@ -50,6 +51,8 @@ task :readbody => :environment do
     since = 1  # from start
   end
   mentions = cl.mentions_timeline(:since_id => since)
+  update_count = 0
+  new_count = 0
   for i in mentions.reverse
     res = i.text + " from " + i.user.name + "(" + i.user.id.to_s + ")" + " : " + i.id.to_s + "\n"
     unless str_to_weight(i.text) or str_to_height(i.text)
@@ -70,6 +73,7 @@ task :readbody => :environment do
                         :user => data )
         if data.save and c.save
           res = res + "(N) " + str_to_weight(i.text).to_s + "kg (N)"
+          new_count = new_count + 1
         end
       else  # Exist User
         if User.set({:twitter_id => i.user.id}, :username => i.user.name, :height => str_to_height(i.text))
@@ -89,6 +93,7 @@ task :readbody => :environment do
                            :user => c )
         if data.save
           res = res + "(S) "
+          update_count = update_count + 1
         end
       end
     end
@@ -101,6 +106,9 @@ task :readbody => :environment do
     if last_log.save
       puts "Last Twitter ID Saved!\n"
     end
+  end
+  if update_count > 0 or new_count > 0
+    cl.update("YAPecaFit情報：" + update_count.to_s + "件を更新し、" + new_count.to_s + "件を追加しました。")
   end
 end
 
