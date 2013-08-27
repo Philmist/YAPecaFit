@@ -1,0 +1,17 @@
+-# encoding: utf-8
+
+.jumbotron
+  .container
+    %h2 プロジェクトが作成されました
+    %dl
+      %dt プロジェクト名
+      %dd= @res['project_name']
+      %dt 開始日
+      %dd= @res['start_date'].to_s 
+      %dt 終了日
+      %dd= @res['end_date'].to_s
+      %dt 公開可否
+      %dd= (@res['project_type']['open'] ? "公開する" : "公開しない") 
+      %dt 作成者
+      %dd= @res['twitter_name'] + "(" + @res['twitter_id'].to_s + ")" 
+

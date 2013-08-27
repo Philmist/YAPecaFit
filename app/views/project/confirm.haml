@@ -1,0 +1,23 @@
+-# encoding:utf-8
+
+- form_tag '/project/create' do
+  - field_set_tag do
+    %dl
+      %dt プロジェクト名
+      %dd= @res['project_name']
+      %dt 開始日
+      %dd= @res['start_date'].to_s 
+      %dt 終了日
+      %dd= @res['end_date'].to_s
+      %dt 公開可否
+      %dd= (@res['project_type']['open'] ? "公開する" : "公開しない") 
+      %dt 作成者
+      %dd= @res['twitter_name'] + "(" + @res['twitter_id'].to_s + ")" 
+    = hidden_field_tag(:project_name, :value => @res['project_name'])
+    = hidden_field_tag(:project_verify, :value => 'true')
+    = hidden_field_tag(:start_date, :value => @res['start_date'].iso8601)
+    = hidden_field_tag(:end_date, :value => @res['end_date'].iso8601)
+    = hidden_field_tag(:project_open, :value => (@res['project_type']['open'] ? 'true' : 'false'))
+    = hidden_field_tag(:project_confirmed, :value => "true")
+  = submit_tag "送信", :class => "btn btn-default"
+

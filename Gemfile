@@ -18,7 +18,7 @@ gem 'rake'
 gem 'sass'
 gem 'haml'
 gem 'bson_ext', :require => 'mongo'
-gem 'mongo_mapper'
+gem 'mongo_mapper', "~> 0.13.0.beta2"
 
 # Test requirements
 

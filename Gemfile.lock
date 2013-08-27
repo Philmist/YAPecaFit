@@ -27,10 +27,11 @@ GEM
     moji (1.6)
     mongo (1.9.1)
       bson (~> 1.9.1)
-    mongo_mapper (0.12.0)
-      activemodel (~> 3.0)
-      activesupport (~> 3.0)
-      plucky (~> 0.5.2)
+    mongo_mapper (0.13.0.beta2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0)
+      mongo (~> 1.8)
+      plucky (~> 0.6.5)
     multi_json (1.7.9)
     multipart-post (1.2.0)
     oauth (0.4.7)
@@ -72,7 +73,7 @@ GEM
     padrino-mailer (0.11.3)
       mail (~> 2.5.3)
       padrino-core (= 0.11.3)
-    plucky (0.5.2)
+    plucky (0.6.6)
       mongo (~> 1.5)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -104,7 +105,7 @@ DEPENDENCIES
   bson_ext
   haml
   moji
-  mongo_mapper
+  mongo_mapper (~> 0.13.0.beta2)
   omniauth
   omniauth-twitter
   padrino (= 0.11.3)
