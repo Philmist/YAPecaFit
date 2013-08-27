@@ -18,7 +18,7 @@
         .collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             %li#nav_link_to_top
-              %a{:href => '/'}トップ
+              %a{:href => '/about'}YAPecaFitについて
             %li#nav_link_to_userpage
               - unless access_control.allowed?(current_account, '/user')
                 %a{:href=>'#'}ユーザーページ

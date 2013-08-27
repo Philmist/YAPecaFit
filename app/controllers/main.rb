@@ -27,6 +27,11 @@ Yapecafit::App.controllers :main do
     render 'main/index'
   end
 
+  get :about, :map => '/about' do
+    @title = "YAPecaFitについて"
+    render 'main/about'
+  end
+
   get :user, :map => '/user' do
     #current_account.to_yaml
     @weight_list = []
