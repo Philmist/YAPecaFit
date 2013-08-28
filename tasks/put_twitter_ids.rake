@@ -7,3 +7,9 @@ task :put_twitter_ids => :environment do
   end
 end
 
+task :delete_duplicate_accounts => :environment do
+  puts "Wait..."
+  Account.ensure_index [[:uid, 1], [:provider, 1]], :unique => true, :dropDups => true
+  puts "Done."
+end
+
