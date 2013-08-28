@@ -44,6 +44,7 @@ Yapecafit::App.controllers :admin do
       redirect url(:admin, :userrole)
     end
     Account.set({:uid => request[:user]}, :role => request[:role])
+    @user = Account.first(:uid => request[:user])
     render 'admin/userrole_confirmed'
   end
 
