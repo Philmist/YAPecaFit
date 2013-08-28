@@ -24,6 +24,9 @@
                 %a{:href=>'#'}ユーザーページ
               - else
                 %a{:href => '/user'}ユーザーページ
+            - if access_control.allowed?(current_account, '/admin')
+              %li#nav_link_to_adminpage
+                %a{:href => '/admin'}管理者
           %ul.nav.navbar-nav.navbar-right
             %p.navbar-text
               - unless access_control.allowed?(current_account, '/user')
