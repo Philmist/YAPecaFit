@@ -69,7 +69,7 @@ module Yapecafit
 
     access_control.roles_for :any do |role|
       role.protect "/user"
-#      role.protect "/admin"
+      role.protect "/admin"
       role.protect "/project/create"
     end
 
