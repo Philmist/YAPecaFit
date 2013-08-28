@@ -1,0 +1,13 @@
+-# vim: fileencoding=utf-8
+
+.container
+  %h2 ユーザーロールの指定結果
+  %dl
+    %dt UID
+    %dd= @user[:uid]
+    %dt 名前
+    %dd= @user[:name]
+    %dt ロール
+    %dd= @user[:role]
+  %a{:href => "/admin"}戻る
+

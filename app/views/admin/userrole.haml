@@ -1,0 +1,15 @@
+-# fileencoding: utf-8
+
+.container
+  - form_tag '/admin/userrole' do
+    %legend ユーザーロール指定
+    - field_set_tag do
+      .input-group#user_select
+        = label_tag "ユーザー", :class => "input-group-addon"
+        = select_tag :user, :options => @users, :class => "form-control"
+      .input-group#role_select
+        = label_tag "ロール", :class => "input-group-addon"
+        = select_tag :role, :options => @role, :class => "form-control"
+    = submit_tag "設定", :class => "input-group-button btn btn-default"
+
+
