@@ -51,8 +51,8 @@ Yapecafit::App.controllers :main do
 
   get :auth, :map => '/auth/:provider/callback' do
     auth = request.env["omniauth.auth"]
-    account = Account.find(:provider => auth["provider"],
-                           :uid => auth["uid"])
+    account = Account.first(:provider => auth["provider"],
+                            :uid => auth["uid"])
     unless account
       account = Account.create_with_omniauth(auth)
       tmpcl = Twitter::Client.new(:consumer_secret => Yapecafit::App.staff_consumer_secret,
