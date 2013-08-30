@@ -43,10 +43,10 @@ Yapecafit::App.controllers :project do
     unless @res['project_name'] = (CGI.escapeHTML(CGI.unescapeHTML(CGI.escapeHTML(request[:project_name])))) rescue nil
       @error_list.push("プロジェクト名が不正です")
     end
-    unless @res['start_date'] = (Date.iso8601(request[:start_date])) rescue nil
+    unless @res['start_date'] = (DateTime.iso8601(request[:start_date]).new_offset("+0900")) rescue nil
       @error_list.push("開始日が不正です")
     end
-    unless @res['end_date'] = (Date.iso8601(request[:end_date])) rescue nil
+    unless @res['end_date'] = (DateTime.iso8601(request[:end_date]).new_offset("+0900")) rescue nil
       @error_list.push("終了日が不正です")
     end
     if @res['start_date'] and @res['end_date']
@@ -64,7 +64,7 @@ Yapecafit::App.controllers :project do
       @res['twitter_id'] = 7144
     else
       @res['twitter_name'] = current_account.name
-      @res['twitter_id'] = current_account.uid
+      @res['twitter_id'] = current_account.uid.to_i
     end
     p = Project.all(:creator_twitter_id => @res['twitter_id'])
     # check unfinished project
@@ -81,7 +81,7 @@ Yapecafit::App.controllers :project do
     elsif request['project_confirmed']
       pj = Project.new(:project_name => @res['project_name'],
                       :project_type => @res['project_type'],
-                      :creator_twitter_id => @res['twitter_id'].to_i,
+                      :creator_twitter_id => @res['twitter_id'],
                       :creator_twitter_name => @res['twitter_name'],
                       :start_date => @res['start_date'],
                       :end_date => @res['end_date']
