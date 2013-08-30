@@ -37,7 +37,8 @@ Yapecafit::App.controllers :project do
   post :create do
     @error_list = []
     @res = {}
-    @proj_type = ""
+    @proj_type = "|"
+
     # error check
     unless @res['project_name'] = (CGI.escapeHTML(CGI.unescapeHTML(CGI.escapeHTML(request[:project_name])))) rescue nil
       @error_list.push("プロジェクト名が不正です")
@@ -53,11 +54,11 @@ Yapecafit::App.controllers :project do
         @error_list.push('終了日は開始日よりあとでなくてはなりません')
       end
     end
-    if @res['project_open'] and @res['project_open'] == 'true'
-      @proj_type = @proj_type + "|" + "open"
+    if request[:project_open] and request[:project_open]
+      @proj_type = @proj_type + "open|"
     end
-
     @res['project_type'] = @proj_type
+
     unless current_account
       @res['twitter_name'] = "てすと"
       @res['twitter_id'] = 7144
@@ -78,15 +79,20 @@ Yapecafit::App.controllers :project do
     if @error_list.length > 0
       render 'project/create'
     elsif request['project_confirmed']
-      p = Project.new(:project_name => @res['project_name'],
+      pj = Project.new(:project_name => @res['project_name'],
                       :project_type => @res['project_type'],
                       :creator_twitter_id => @res['twitter_id'].to_i,
                       :creator_twitter_name => @res['twitter_name'],
                       :start_date => @res['start_date'],
                       :end_date => @res['end_date']
                      )
-      p.save
-      render 'project/proj_created'
+      if pj.save
+        puts "New project created."
+        render 'project/proj_created'
+      else
+        @error_list = ["プロジェクトの作成に失敗しました"]
+        render 'project/create'
+      end
     else
       render 'project/confirm'
     end
