@@ -26,11 +26,13 @@ Yapecafit::App.controllers :project do
   
   get :index do
     @project = Project.all
+    @title = "プロジェクト一覧"
     render 'project/index'
   end
 
   get :create do
     @res = {}
+    @title = "プロジェクト作成"
     render 'project/create'
   end
 
@@ -38,6 +40,7 @@ Yapecafit::App.controllers :project do
     @error_list = []
     @res = {}
     @proj_type = "|"
+    @title = "プロジェクト作成"
 
     # error check
     unless @res['project_name'] = (CGI.escapeHTML(CGI.unescapeHTML(CGI.escapeHTML(request[:project_name])))) rescue nil
