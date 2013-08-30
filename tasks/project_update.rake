@@ -16,3 +16,11 @@ task :project_show => :environment do
   end
 end
 
+task :project_destroyall => :environment do
+  if Project.destroy_all
+    puts "Destroy project done."
+  else
+    puts "Failed to destroy project."
+  end
+end
+

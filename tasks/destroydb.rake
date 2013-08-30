@@ -30,7 +30,12 @@ task :destroydb => :environment do
     puts "failed.\n"
   end
 
+  puts "Destroy Project Database..."
+  if Project.destroy_all
+    puts "done.\n"
+  else
+    puts "failed.\n"
+  end
 end
-
 
 
