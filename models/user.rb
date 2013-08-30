@@ -8,6 +8,7 @@ class User
   key :twitter_id, Integer, :required => true
   key :height, Float
   key :comment, String
+  key :type, String
   timestamps!
   many :weights, :class_name => "Weights"
 end
