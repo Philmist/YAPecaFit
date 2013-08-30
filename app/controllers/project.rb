@@ -80,7 +80,7 @@ Yapecafit::App.controllers :project do
     elsif request['project_confirmed']
       p = Project.new(:project_name => @res['project_name'],
                       :project_type => @res['project_type'],
-                      :creator_twitter_id => @res['twitter_id'],
+                      :creator_twitter_id => @res['twitter_id'].to_i,
                       :creator_twitter_name => @res['twitter_name'],
                       :start_date => @res['start_date'],
                       :end_date => @res['end_date']

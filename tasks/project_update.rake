@@ -1,4 +1,4 @@
-# vim: fileencoding: utf-8
+# fileencoding: utf-8
 
 require 'twitter'
 require 'moji'
