@@ -1,13 +1,15 @@
 -# coding: utf-8
 
-- if @project and @project.length > 0
-  - for i in @project
-    %ul
-      %li= "プロジェクト名: " + @project[:project_name]
-      %li= "作った人: " + @project[:creator_twitter_name] + " ( " + @project.creator_twitter_id.to_s + ")"
-      %li= "開始日: " + @project[:start_date] ? @project[:start_date].to_s : "なし"
-      %li= "終了日: " + @project[:end_date] ? @project[:end_date].to_s : "なし"
-- else
-  %p プロジェクトはありません
+.container
+  %h2 プロジェクト一覧
+  - if @project and @project.length > 0
+    - for i in @project
+      %ul
+        %li= "プロジェクト名: " + i[:project_name]
+        %li= "作った人: " + i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"
+        %li= "開始日: " + i[:start_date] ? i[:start_date].to_s : "なし"
+        %li= "終了日: " + i[:end_date] ? i[:end_date].to_s : "なし"
+  - else
+    %p プロジェクトはありません
 
 
