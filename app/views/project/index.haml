@@ -3,10 +3,10 @@
 - if @project and @project.length > 0
   - for i in @project
     %ul
-      %li= "プロジェクト名: " + @project.project_name
-      %li= "作った人: " + @project.creator_twitter_name + " ( " + @project.creator_twitter_id.to_s + ")"
-      %li= "開始日: " + @project.start_date ? @project.start_date.to_s : "なし"
-      %li= "終了日: " + @project.end_date ? @project.end_date.to_s : "なし"
+      %li= "プロジェクト名: " + @project[:project_name]
+      %li= "作った人: " + @project[:creator_twitter_name] + " ( " + @project.creator_twitter_id.to_s + ")"
+      %li= "開始日: " + @project[:start_date] ? @project[:start_date].to_s : "なし"
+      %li= "終了日: " + @project[:end_date] ? @project[:end_date].to_s : "なし"
 - else
   %p プロジェクトはありません
 
