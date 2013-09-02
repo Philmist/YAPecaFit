@@ -41,6 +41,14 @@ task :project_destroyall => :environment do
   end
 end
 
+task :project_setuniq => :environment do
+  if Project.ensure_index [[:project_name, 1], [:creator_twitter_id, 1]], :unique => true, :dropDups => true
+    puts "Done for creating index."
+  else
+    puts "Failed."
+  end
+end
+
 task :project_update => :environment do
   cl = Twitter::Client.new(
     :consumer_key => ENV['STAFF_CONS_KEY'],
