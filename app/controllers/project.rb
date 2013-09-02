@@ -87,7 +87,8 @@ Yapecafit::App.controllers :project do
                       :creator_twitter_id => @res['twitter_id'],
                       :creator_twitter_name => @res['twitter_name'],
                       :start_date => @res['start_date'],
-                      :end_date => @res['end_date']
+                      :end_date => @res['end_date'],
+                      :project_results => []
                      )
       if pj.save
         puts "New project created."

@@ -71,7 +71,7 @@ module Yapecafit
       role.protect "/user"
       role.protect "/admin"
       role.protect "/admin/userrole"
-      role.protect "/project/create"
+#      role.protect "/project/create"
     end
 
     access_control.roles_for :users do |role|

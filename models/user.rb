@@ -18,7 +18,7 @@ class Weights
 
   # key <name>, <type>
   key :twitter_id, Integer, :required => true
-  key :datetime, String
+  key :datetime, String  # Should be rfc2822
   key :weight, Float, :required => true
   key :tweet_id, Integer, :required => true
   key :comment, String

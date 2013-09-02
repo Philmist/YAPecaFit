@@ -8,7 +8,7 @@ class Project
   key :creator_twitter_name, String
   key :start_date, Date
   key :end_date, Date
-  key :project_results, EmbeddedCollection, :class_name => "ProjectResult"
+  many :project_results, :class_name => "ProjectResult"
   timestamps!
 end
 
@@ -19,6 +19,6 @@ class ProjectResult
   key :initial_weight, Float
   key :final_weight, Float
   key :result, Float
-  embedded_in :project
+  embedded_in :Project
 end
 
