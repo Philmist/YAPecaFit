@@ -27,6 +27,16 @@
             - if access_control.allowed?(current_account, '/admin')
               %li#nav_link_to_adminpage
                 %a{:href => '/admin'}管理者
+            %li.dropdown#project_dropdown
+              %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+                プロジェクト
+                %b.caret 
+              %ul.dropdown-menu
+                %li#nav_link_to_project_index
+                  %a{:href => "/project/"}一覧
+                  - if access_control.allowed?(current_account, "/project/create")
+                    %li#nav_link_to_project_create
+                      %a{:href => "/project/create"}作成
           %ul.nav.navbar-nav.navbar-right
             %p.navbar-text
               - unless access_control.allowed?(current_account, '/user')
