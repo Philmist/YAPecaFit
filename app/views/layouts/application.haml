@@ -10,11 +10,13 @@
     =javascript_include_tag 'bootstrap.min'
     =stylesheet_link_tag 'bootstrap.min'
     =yield_content :include
+    %link{:href => "http://fonts.googleapis.com/css?family=Happy+Monkey", :rel => "stylesheet", :type => "text/css"}/
   %body
     #header
       %nav.navbar.navbar-default.navbar-static-top{:role => 'navigation'}
         .navbar-header
-          %a.navbar-brand{:href => '/'}YAPecaFit
+          %a.navbar-brand{:href => '/'}
+            %span#top_page_logo{:style => "font-family: 'Happy Monkey', cursive;"}YAPecaFit
         .collapse.navbar-collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav
             %li#nav_link_to_top
