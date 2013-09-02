@@ -1,0 +1,42 @@
+-# filecoding= utf-8
+
+.container
+  .row
+    %h2= @project.project_name
+    %dl
+      %dt 作成者名
+      %dd= @project.creator_twitter_name
+      - if @project.start_date
+        %dt 開始日
+        %dd= @project.start_date.rfc2822
+      - if @project.end_date
+        %dt 終了日
+        %dd= @project.end_date.rfc2822
+  .row
+    %h2 現在の状態
+    - if @project.project_results
+      %table.table
+        %thead
+          %tr
+            %th 名前
+            %th 開始体重
+            %th 最終体重
+            %th 結果
+        %tbody
+          - for i in @project.project_results
+            %tr
+              %td= i.twitter_name
+              - if i.initial_weight and not i.initial_weight == 0.0
+                %td= i.initial_weight.round(1).to_s
+              - else
+                %td 値無し
+              - if i.final_weight and not i.final_weight == 0.0
+                %td= i.final_weight.round(1).to_s
+              - else
+                %td 値無し
+              - if i.result
+                %td= i.result.round(1).to_s
+              - else
+                %td 値無し
+
+

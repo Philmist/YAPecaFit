@@ -4,7 +4,8 @@
   %h2 プロジェクト一覧
   - if @project and @project.length > 0
     - for i in @project
-      %h3= i[:project_name]
+      %h3
+        %a{:href => ("/project/show/"+i[:creator_twitter_id].to_s+"/"+i[:project_name])}= i.project_name
       %ul
         %li= "作った人: " + i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"
         %li= "開始日: " + (i[:start_date] ? i[:start_date].to_s : "なし")

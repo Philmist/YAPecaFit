@@ -1,7 +1,6 @@
 require 'date'
 require 'time'
 require 'cgi'
-require 'yaml'
 
 Yapecafit::App.controllers :project do
   
@@ -33,6 +32,17 @@ Yapecafit::App.controllers :project do
     end
     @title = "プロジェクト一覧"
     render 'project/index'
+  end
+
+  get :show, :with => [:creator_id, :project_name] do
+    @project = Project.where(:project_name => params[:project_name],
+                             :creator_twitter_id => params[:creator_id].to_i).first
+    @title = @project.project_name + " | " + "プロジェクト詳細"
+    unless @project
+      # TODO: should use error 404
+      redirect '/project'
+    end
+    render 'project/list'
   end
 
   get :create do

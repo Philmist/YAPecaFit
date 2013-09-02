@@ -2,9 +2,9 @@ class Project
   include MongoMapper::Document
 
   # key <name>, <type>
-  key :project_name, String, :required => true
+  key :project_name, String, :required => true  # multi unique key
   key :project_type, String, :required => true
-  key :creator_twitter_id, Integer, :required => true
+  key :creator_twitter_id, Integer, :required => true  # multi unique key
   key :creator_twitter_name, String
   key :start_date, Date
   key :end_date, Date
