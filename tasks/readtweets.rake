@@ -108,7 +108,7 @@ task :readbody => :environment do
     end
   end
   if update_count > 0 or new_count > 0
-    cl.update("YAPecaFitî•ñF" + update_count.to_s + "Œ‚ğXV‚µA" + new_count.to_s + "Œ‚ğ’Ç‰Á‚µ‚Ü‚µ‚½B")
+    cl.update("YAPecaFitæƒ…å ±ï¼š" + update_count.to_s + "ä»¶ã‚’æ›´æ–°ã—ã€" + new_count.to_s + "ä»¶ã‚’è¿½åŠ ã—ã¾ã—ãŸã€‚")
   end
 end
 
