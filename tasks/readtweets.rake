@@ -1,4 +1,4 @@
-# filecoding: utf-8
+# vim: fileencoding=utf-8
 require 'twitter'
 require 'moji'
 require 'date'
@@ -108,7 +108,7 @@ task :readbody => :environment do
     end
   end
   if update_count > 0 or new_count > 0
-    cl.update("YAPecaFit情報：" + update_count.to_s + "件を更新し、" + new_count.to_s + "件を追加しました。")
+    cl.update("YAPecaFit情報：" + update_count.to_s + "件を更新し、" + new_count.to_s + "件を追加しました。") rescue puts "Tweet error occured."
   end
 end
 
