@@ -21,12 +21,18 @@ Yapecafit::App.controllers :show do
   
   get :index, :with => :id do
     @user = User.first(:twitter_id => params[:id].to_i)
-    if @user
+    if @user and (@user.type and not @user.type['forbidden'])
       @name = @user[:username]
       @twitter_id = @user[:twitter_id]
       @weights = Weights.all(:twitter_id => @user[:twitter_id], :order => :tweet_id.asc)
       render 'show/user'
+    else
+      pass
     end
+  end
+
+  get :index, :map => '/show/*' do
+    render 'show/notfound'
   end
 
 end
