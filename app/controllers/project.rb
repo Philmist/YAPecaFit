@@ -1,3 +1,5 @@
+#
+# vim: fileencoding=utf-8
 require 'date'
 require 'time'
 require 'cgi'
@@ -22,15 +24,10 @@ Yapecafit::App.controllers :project do
   # get '/example' do
   #   'Hello world!'
   # end
+
   
   get :index do
-    @project = []
-    for i in Project.all
-      if i.project_type['open']
-        @project.push(i)
-      end
-    end
-    @title = "プロジェクト一覧"
+    show_project()
     render 'project/index'
   end
 
@@ -46,13 +43,7 @@ Yapecafit::App.controllers :project do
 
   get :show do
     @alert = "そのプロジェクトは存在しません"
-    @project = []
-    for i in Project.all
-      if i.project_type['open']
-        @project.push(i)
-      end
-    end
-    @title = "プロジェクト一覧"
+    show_project()
     render 'project/index'
   end
 
