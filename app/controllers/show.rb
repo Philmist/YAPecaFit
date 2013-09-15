@@ -1,3 +1,5 @@
+#
+# vim: fileencoding=utf-8
 Yapecafit::App.controllers :show do
   
   # get :index, :map => '/foo/bar' do
@@ -36,3 +38,4 @@ Yapecafit::App.controllers :show do
   end
 
 end
+
