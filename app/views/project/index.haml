@@ -1,6 +1,11 @@
 -# coding: utf-8
 
 .container
+  - if @alert
+    %ul.alert#project_list_alert
+      %li.alert-info= @alert
+
+.container
   %h2 プロジェクト一覧
   - if @project and @project.length > 0
     - for i in @project

@@ -39,10 +39,13 @@ Yapecafit::App.controllers :project do
                              :creator_twitter_id => params[:creator_id].to_i).first
     @title = @project.project_name + " | " + "プロジェクト詳細"
     unless @project
-      # TODO: should use error 404
-      redirect '/project'
+      pass
     end
     render 'project/list'
+  end
+
+  get :show do
+    render '/project'
   end
 
   get :create do
