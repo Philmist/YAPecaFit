@@ -45,7 +45,15 @@ Yapecafit::App.controllers :project do
   end
 
   get :show do
-    render '/project'
+    @alert = "そのプロジェクトは存在しません"
+    @project = []
+    for i in Project.all
+      if i.project_type['open']
+        @project.push(i)
+      end
+    end
+    @title = "プロジェクト一覧"
+    render 'project/index'
   end
 
   get :create do
