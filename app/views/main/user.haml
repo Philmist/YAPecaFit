@@ -12,21 +12,27 @@
 - content_for :include do
   =javascript_include_tag 'weight_graph'
 
-.row
-  .col-md-8
-    %h2
-      直近5回の記録
-    %ul#weight_list
-      - for i in @weight_list[0, 5]
-        %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
-
-  .col-md-4
-    %h2
-      紹介URL
-    %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
-    -#バグが出たのでとりあえず決めうち。
-.row
-  .col-md-4
-    %h2 ユーザーページ公開/非公開設定
-    %p 実装中です。
+.container
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href => "#record", :data => {:toggle => "tab"}} 記録
+    %li
+      %a{:href => "#userurl", :data => {:toggle => "tab"}} 公開URL
+    %li
+      %a{:href => "#settings", :data => {:toggle => "tab"}} 設定
+  .tab-content
+    .tab-pane.active#record
+      %h2
+        直近5回の記録
+      %ul#weight_list
+        - for i in @weight_list[0, 5]
+          %li.weight_items= i.weight.to_s + "kg at " + (i.datetime ? i.datetime : "?")
+    .tab-pane#userurl
+      %h2
+        紹介用URL
+      %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
+      -#バグが出たのでとりあえず決めうち。
+    .tab-pane#settings
+      %h2 ユーザーページ公開/非公開設定
+      %p 実装中です。
 
