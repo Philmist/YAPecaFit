@@ -15,6 +15,7 @@
         %li= "作った人: " + i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"
         %li= "開始日: " + (i[:start_date] ? i[:start_date].to_s : "なし")
         %li= "終了日: " + (i[:end_date] ? i[:end_date].to_s : "なし")
+        %li= "状態: " + (i[:project_type]['open'] ? "公開" : "非公開") + "," + (i[:project_type]['completed'] ? "完了" : "遂行中")
   - else
     %p プロジェクトはありません
 
