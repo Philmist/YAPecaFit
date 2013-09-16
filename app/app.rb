@@ -76,7 +76,7 @@ module Yapecafit
 
     access_control.roles_for :users do |role|
       role.allow "/user"
-      role.allow "/project/create"
+#      role.allow "/project/create"
     end
 
     access_control.roles_for :admin do |role|
