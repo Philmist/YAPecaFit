@@ -12,6 +12,11 @@ Yapecafit::App.helpers do
       if i.project_type['open']
         @project.push(i)
       end
+      if current_account
+        if (not i.project_type['open']) and (i.creator_twitter_id == current_account.uid.to_i or current_account.role["admin"])  # uid is STRING, and author or admin can see forbidden project
+          @project.push(i)
+        end
+      end
     end
     @title = "プロジェクト一覧"
   end

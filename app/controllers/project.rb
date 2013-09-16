@@ -79,7 +79,7 @@ Yapecafit::App.controllers :project do
     end
     @res['project_type'] = @proj_type
 
-    unless current_account
+    unless current_account  # test code
       @res['twitter_name'] = "てすと"
       @res['twitter_id'] = 7144
     else
