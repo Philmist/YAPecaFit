@@ -24,6 +24,7 @@ Yapecafit::App.controllers :main do
   
   get :index, :map => '/' do
     @title = "トップページ"
+    @updatetime = Getlog.all.last.created_at.to_s
     render 'main/index'
   end
 

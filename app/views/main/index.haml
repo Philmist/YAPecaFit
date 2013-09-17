@@ -14,6 +14,8 @@
       %p ようこそ、YetAnotherPecaFit(YAPecaFit)へ。
       %p 使い始めるためにはTwitterアカウントが必要です。あらかじめご用意ください。
       %p 使い方はメニューから「YAPecaFitについて」をご覧ください。
+      %h2 最新のTweet取得日時
+      %p= @updatetime
     .col-md-6
       %a{:class => "twitter-timeline", :href => "https://twitter.com/YAPecaFit", "data-widget-id" => "372700703505936384"}@YAPecaFitからのツイート
       :javascript
