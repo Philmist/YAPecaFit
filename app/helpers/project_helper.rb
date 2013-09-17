@@ -8,7 +8,7 @@ Yapecafit::App.helpers do
 
   def show_project()
     @project = []
-    for i in Project.all
+    for i in Project.sort(:created_at.desc)
       if i.project_type['open']
         @project.push(i)
       end
