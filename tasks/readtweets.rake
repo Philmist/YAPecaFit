@@ -107,8 +107,8 @@ task :readbody => :environment do
       puts "Last Twitter ID Saved!\n"
     end
   end
-  if update_count > 0 or new_count > 0
-    cl.update("YAPecaFit情報：" + update_count.to_s + "件を更新し、" + new_count.to_s + "件を追加しました。") rescue puts "Tweet error occured."
-  end
+#  if update_count > 0 or new_count > 0
+#    cl.update("YAPecaFit情報：" + update_count.to_s + "件を更新し、" + new_count.to_s + "件を追加しました。") rescue puts "Tweet error occured."
+#  end
 end
 
