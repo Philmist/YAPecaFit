@@ -45,7 +45,7 @@ Yapecafit::App.controllers :main do
     @user_twitter_id = current_account.uid.to_s
     @name = (self.current_account.name ? (current_account.name) : "名無し" ) 
     u = User.first(:twitter_id => current_account.uid.to_i)
-    @type = u.type ? u.type : ""
+    @type = current_account.type ? current_account.type : ""
     @comment = u.comment ? u.comment : ""
     render 'main/user'
   end
