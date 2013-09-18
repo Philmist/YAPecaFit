@@ -1,0 +1,21 @@
+-# vim: fileencoding=utf-8
+
+.container
+  %h2 設定
+  - form_tag '/setting', :method => 'post' do
+    - field_set_tag do
+      %legend ユーザーページ設定
+      .form-group
+        - label_tag "体重ページを公開する" do
+          .radio
+            = radio_button_tag :pageopen, :value => "open", :id => "page_open", :checked => (@page_open ? "checked" : nil)
+            ページを他人に公開する(紹介URLを知っている人が見ることができる)
+          .radio
+            = radio_button_tag :pageopen, :value => "forbidden", :id => "page_forbidden", :checked => (@page_open ? nil : "checked")
+            ページを非公開にする(紹介URLはどの人からも見ることが出来ない)
+      .form-group
+        - label_tag "コメントの指定" do
+          = text_field_tag :comment, :value => (@comment ? "" : @comment), :id => "page_comment", :placeholder => "コメント(最大1024文字)", :maxlength => 1024
+      = submit_tag "送信", :class => "btn btn-default"
+
+

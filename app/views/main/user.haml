@@ -19,7 +19,7 @@
     %li
       %a{:href => "#userurl", :data => {:toggle => "tab"}} 公開URL
     %li
-      %a{:href => "#settings", :data => {:toggle => "tab"}} 設定
+      %a{:href => "#settings", :data => {:toggle => "tab"}} 現在の設定
   .tab-content
     .tab-pane.active#record
       %h2
@@ -33,6 +33,10 @@
       %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
       -#バグが出たのでとりあえず決めうち。
     .tab-pane#settings
-      %h2 ユーザーページ公開/非公開設定
-      %p 実装中です。
+      %h2 現在の設定
+      %dl.dl-horizontal
+        %dt ページ公開/非公開
+        %dd= @type['forbidden'] ? "非公開" : "公開"
+        %dt コメント
+        %dd= @comment.length==0 ? "未設定" : @comment
 

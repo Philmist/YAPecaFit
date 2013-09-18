@@ -7,20 +7,20 @@
       %li.alert-info= i
 
 .container
-  - form_tag '/project/create', :id => "project_form", :class => "input-group" do
+  - form_tag '/project/create', :id => "project_form" do
     - field_set_tag do
       %legend プロジェクト作成
-      %div.input-group#project_name
-        = label_tag "プロジェクト名", :class => "input-group-addon"
+      %div.form-group
+        = label_tag "プロジェクト名", :for => "project_name"
         = text_field_tag :project_name, :maxlength => 128, :required => true, :placeholder => "プロジェクトの名前", :class => "form-control", :id => "project_name", :value => @res['project_name'] ? @res['project_name'] : ""
-      %div.input-group#project_open
-        = label_tag "公開する", :class => "input-group-addon"
-        = check_box_tag :project_open, :value => 'true', :class => "form-control", :id => "project_open"
-      %div.input-group#start_date
-        = label_tag "開始日(YYYY-MM-DD)", :class => "input-group-addon"
+      %div.form-group
+        = label_tag "公開する", :for => "project_open"
+        = check_box_tag :project_open, :value => 'true', :class => "checkbox", :id => "project_open"
+      %div.form-group
+        = label_tag "開始日(YYYY-MM-DD)", :for => "start_date"
         = text_field_tag :start_date, :maxlength => 10, :placeholder => "YYYY-MM-DD", :class => "form-control", :id => "start_date", :required => true, :value => @res['start_date'] ? @res['start_date'] : ""
-      %div.input-group#end_date
-        = label_tag "終了日(YYYY-MM-DD)", :class => "input-group-addon"
+      %div.form-group
+        = label_tag "終了日(YYYY-MM-DD)", :for => "end_date"
         = text_field_tag :end_date, :maxlength => 10, :placeholder => "YYYY-MM-DD", :class => "form-control", :id => "end_date", :required => true, :value => @res['end_date'] ? @res['end_date'] : ""
     = submit_tag "送信", :class => "input-group-button btn btn-default"
 
