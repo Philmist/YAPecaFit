@@ -20,7 +20,7 @@ Yapecafit::App.controllers :setting do
   # end
   
   get :index do
-    u = User.where(:twitter_id => current_user.uid.to_i).first
+    u = User.where(:twitter_id => current_account.uid.to_i).first
     if u.type['forbidden']
       @page_open = false
     else
