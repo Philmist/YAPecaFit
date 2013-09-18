@@ -47,10 +47,11 @@ Yapecafit::App.controllers :main do
     u = User.where(:twitter_id => current_account.uid.to_i).first
     if u
       @type = u.type ? u.type : ""
+      @comment = u.comment ? u.comment : ""
     else
       @type = ""
+      @comment = ""
     end
-    @comment = u.comment ? u.comment : ""
     render 'main/user'
   end
 
