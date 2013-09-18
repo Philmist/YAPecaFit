@@ -22,9 +22,9 @@ Yapecafit::App.controllers :setting do
   get :index do
     u = User.where(:twitter_id => current_account.uid.to_i).first
     unless u.type and u.type['forbidden']
-      @page_open = false
-    else
       @page_open = true
+    else
+      @page_open = false
     end
     @comment = u.comment
     render 'setting/index'
