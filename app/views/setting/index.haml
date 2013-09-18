@@ -14,8 +14,8 @@
             = radio_button_tag :pageopen, :value => "forbidden", :id => "page_forbidden", :checked => (@page_open ? nil : "checked")
             ページを非公開にする(紹介URLはどの人からも見ることが出来ない)
       .form-group
-        - label_tag "コメントの指定" do
-          = text_field_tag :comment, :value => (@comment ? "" : @comment), :id => "page_comment", :placeholder => "コメント(最大1024文字)", :maxlength => 1024
+        - label_tag "コメントの指定", :for => "page_comment"
+        = text_field_tag :comment, :value => (@comment ? "" : @comment), :id => "page_comment", :placeholder => "コメント(最大1024文字)", :maxlength => 1024
       = submit_tag "送信", :class => "btn btn-default"
 
 
