@@ -23,6 +23,8 @@ Yapecafit::App.controllers :admin do
   # end
   
   get :index do
+    mongo_stats = MongoMapper.database.collection('fs.chunks').stats
+    @storage_size = (mongo_stats.storageSize.to_f / 1024.0).round(2)
     render 'admin/index'
   end
 

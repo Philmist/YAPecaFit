@@ -4,4 +4,7 @@
   %h2 管理者メニュー
   %ul
     %li= link_to 'ユーザーロール指定', '/admin/userrole'
-
+  %h2 データベース容量
+  %dl
+    %dt Storage Size
+    %dd= @storage_size.to_s + "KiB"
