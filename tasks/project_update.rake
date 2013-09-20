@@ -109,9 +109,16 @@ task :project_update => :environment do
         puts "USER: " + j.username + " FINALWEIGHT: " + last_weight.to_s + " at " + last_date.rfc2822
         # Calculate Result
         result = 0.0
-        if i.project_type and i.project_type['bmi']  # Use BMI
-          # TODO: calculate BMI
-        else  # Standard method (diff first and last weight)
+        if i.project_type and i.project_type['bmi']  # Use BMI diff
+          STD_BMI = 22.0  # target BMI
+          # BMI = weight[kg] / (height[m]^2)
+          initial_weight = i.project_results.select{|k| k.twitter_id == j.twitter_id}.first[:initial_weight]
+          height = j[:height]
+          last_weight = (last_weight == 0.0) ? initial_weight : last_weight
+          initial_diff = (STD_BMI - ((initial_weight) / ((height / 100.0)**2.0))).abs
+          last_diff = (STD_BMI - ((last_weight) / ((height / 100.0)**2.0))).abs
+          result = (initial_diff - last_diff).round(2)
+        else  # Standard method (diff first between last weight)
           result = ((i.project_results.select{|k| k.twitter_id == j.twitter_id}.first[:initial_weight]) - last_weight).abs
           result = result.round(2)
         end
