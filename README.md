@@ -1,4 +1,14 @@
 YAPecaFit
 =========
 
-YetAnotherPecaFit Repository
+YetAnotherPecaFit(YAPecaFit)のコードのリポジトリです。
+
+ライセンス
+----------
+
+煮るなり焼くなりお好きにどうぞ(パブリックドメイン)。
+ただし、使用している他のライブラリについてはそれぞれのライセンスに従います。
+
+特にHighchartsは営利目的やら商用だったりすると有料なのでご注意ください。
+
+
