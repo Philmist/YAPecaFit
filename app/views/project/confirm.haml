@@ -1,4 +1,4 @@
--# encoding:utf-8
+-# vim: fileencoding=utf-8
 
 .container
   - form_tag '/project/create' do
@@ -12,6 +12,8 @@
         %dd= @res['end_date'].to_s
         %dt 公開可否
         %dd= (@res['project_type']['open'] ? "公開する" : "公開しない") 
+        %dt 種別
+        %dd= (@res['project_type']['bmi'] ? "BMI" : "体重増減幅")
         %dt 作成者
         %dd= @res['twitter_name'] + "(" + @res['twitter_id'].to_s + ")" 
       = hidden_field_tag(:project_name, :value => @res['project_name'])

@@ -39,6 +39,12 @@ Yapecafit::App.controllers :admin do
     render 'admin/userrole'
   end
 
+  get :projectdelete do
+    @title = "プロジェクト削除"
+    proj_list = Project.all
+    render 'admin/projectdelete'
+  end
+
   post :userrole do
     @title = "ユーザーロール指定結果"
     sel_acc = Account.all(:uid => request[:user])

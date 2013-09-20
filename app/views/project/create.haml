@@ -1,4 +1,4 @@
--# encoding: utf-8
+-# fileencoding=utf-8
 
 .container
   - if @error_list and @error_list.length > 0
@@ -10,16 +10,24 @@
   - form_tag '/project/create', :id => "project_form" do
     - field_set_tag do
       %legend プロジェクト作成
-      %div.form-group
+      .form-group
         = label_tag "プロジェクト名", :for => "project_name"
         = text_field_tag :project_name, :maxlength => 128, :required => true, :placeholder => "プロジェクトの名前", :class => "form-control", :id => "project_name", :value => @res['project_name'] ? @res['project_name'] : ""
-      %div.form-group
+      .form-group
         = label_tag "公開する", :for => "project_open"
         = check_box_tag :project_open, :value => 'true', :class => "checkbox", :id => "project_open"
-      %div.form-group
+      .form-group
+        - label_tag "種別" do
+          .radio
+            = radio_button_tag :project_type, :value => "normal", :id => "type_normal", :checked => "true"
+            体重の増減幅を測る
+          .radio
+            = radio_button_tag :project_type, :value => "bmi", :id => "type_bmi"
+            BMI(体重kg/(身長m)^2)がどれだけ22(標準体重)に近づいたかを測る
+      .form-group
         = label_tag "開始日(YYYY-MM-DD)", :for => "start_date"
         = text_field_tag :start_date, :maxlength => 10, :placeholder => "YYYY-MM-DD", :class => "form-control", :id => "start_date", :required => true, :value => @res['start_date'] ? @res['start_date'] : ""
-      %div.form-group
+      .form-group
         = label_tag "終了日(YYYY-MM-DD)", :for => "end_date"
         = text_field_tag :end_date, :maxlength => 10, :placeholder => "YYYY-MM-DD", :class => "form-control", :id => "end_date", :required => true, :value => @res['end_date'] ? @res['end_date'] : ""
     = submit_tag "送信", :class => "input-group-button btn btn-default"
