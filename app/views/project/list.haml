@@ -15,7 +15,7 @@
   .row
     %h2 現在の状態
     - if @project.project_results
-      %table.table
+      %table.table#result_table
         %thead
           %tr
             %th 名前
@@ -39,4 +39,12 @@
               - else
                 %td 値無し
 
+:javascript
+  $(document).ready(function ()
+    {
+      $("#result_table").tablesorter();
+    }
+  );
 
+- content_for :include do
+  =javascript_include_tag 'jquery.tablesorter'
