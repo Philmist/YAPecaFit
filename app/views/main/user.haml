@@ -3,7 +3,7 @@
 .jumbotron
   .container
     %h2
-      =@name + "さん"
+      %span#user_name= @name + "さん"
       (
       %span#twitter_uid= @user_twitter_id
       ) のグラフ
