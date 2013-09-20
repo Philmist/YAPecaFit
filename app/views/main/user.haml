@@ -39,4 +39,7 @@
         %dd= @type['forbidden'] ? "非公開" : "公開"
         %dt コメント
         %dd= @comment.length==0 ? "未設定" : @comment
+      %p
+        %a{:href => "/setting"}設定ページへ
+
 
