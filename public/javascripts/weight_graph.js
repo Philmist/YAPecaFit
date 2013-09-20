@@ -33,6 +33,8 @@ $(document).ready(function () {
     },
     series : [
       {
+        data: [[0,0]],
+        name: 'Weight',
       },
     ],
   };

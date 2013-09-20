@@ -23,7 +23,7 @@ Yapecafit::App.controllers :show do
   
   get :index, :with => :id do
     @user = User.first(:twitter_id => params[:id].to_i)
-    if @user and (@user.type and not @user.type['forbidden'])
+    if @user and (@user.type and (not @user.type['forbidden']))
       @name = @user[:username]
       @twitter_id = @user[:twitter_id]
       @weights = Weights.all(:twitter_id => @user[:twitter_id], :order => :tweet_id.asc)
