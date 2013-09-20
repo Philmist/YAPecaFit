@@ -37,10 +37,10 @@ $(document).ready(function () {
     ],
   };
   var target_url = '/api/weight/' + $("#twitter_uid")[0].innerHTML;
-  var uname = $("#name")[0].innerHTML;
+  //var uname = '' + $("#name")[0].innerHTML;
   $.getJSON(target_url, function(data) {
     opts.series[0].data = data;
-    opts.series[0].name = uname;
+    //opts.series[0].name = uname;
     var chart = new Highcharts.Chart(opts);
   });
 });
