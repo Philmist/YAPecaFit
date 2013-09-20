@@ -31,11 +31,16 @@ $(document).ready(function () {
         text : '体重'
       },
     },
-    series : [[0,0]],
+    series : [
+      {
+        data : [0,0],
+      },
+    ],
   };
   var target_url = '/api/weight/' + $("#twitter_uid")[0].innerHTML;
   $.getJSON(target_url, function(data) {
     opts.series[0].data = data;
+    opts.series[0].name = $("#name")[0].innderHTML;
     var chart = new Highcharts.Chart(opts);
   });
 });
