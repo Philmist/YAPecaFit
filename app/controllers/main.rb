@@ -44,6 +44,7 @@ Yapecafit::App.controllers :main do
     @title = (self.current_account.name ? (current_account.name + "さんの") : "名無しさんの" ) + "記録"
     @user_twitter_id = current_account.uid.to_s
     @name = (self.current_account.name ? (current_account.name) : "名無し" ) 
+    @account_id = current_account.id.to_s
     u = User.where(:twitter_id => current_account.uid.to_i).first
     if u
       @type = u.type ? u.type : ""
