@@ -10,7 +10,7 @@
   - if @project and @project.length > 0
     - for i in @project
       %h3
-        %a{:href => ("/project/show/"+i[:creator_twitter_id].to_s+"/"+i[:project_name])}= i.project_name
+        %a{:href => ("/project/show/"+i.id.to_s)}= i.project_name
       %dl.dl-horizontal
         %dt 作った人
         %dd= i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"

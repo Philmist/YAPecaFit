@@ -31,9 +31,8 @@ Yapecafit::App.controllers :project do
     render 'project/index'
   end
 
-  get :show, :with => [:creator_id, :project_name] do
-    @project = Project.where(:project_name => params[:project_name],
-                             :creator_twitter_id => params[:creator_id].to_i).first
+  get :show, :with => [:id] do
+    @project = Project.find(BSON::ObjectId.from_string(params[:id])
     @title = @project.project_name + " | " + "プロジェクト詳細"
     unless @project
       pass
