@@ -32,7 +32,7 @@ Yapecafit::App.controllers :project do
   end
 
   get :show, :with => [:id] do
-    @project = Project.find(BSON::ObjectId.from_string(params[:id])
+    @project = Project.find(BSON::ObjectId.from_string(params[:id]))
     @title = @project.project_name + " | " + "プロジェクト詳細"
     unless @project
       pass
