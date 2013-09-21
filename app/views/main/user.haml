@@ -30,9 +30,8 @@
     .tab-pane#userurl
       %h2
         紹介用URL
-      %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@user_twitter_id
+      %p= "http://"+request.env["HTTP_HOST"]+"/show/"+@account_id
       -#バグが出たのでとりあえず決めうち。
-      %p{:style => "display:none;"}= @account_id
     .tab-pane#settings
       %h2 現在の設定
       %dl.dl-horizontal
