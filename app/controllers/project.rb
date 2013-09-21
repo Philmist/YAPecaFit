@@ -73,8 +73,11 @@ Yapecafit::App.controllers :project do
         @error_list.push('終了日は開始日よりあとでなくてはなりません')
       end
     end
-    if request[:project_open] and request[:project_open]
+    if request[:project_open]
       @proj_type = @proj_type + "open|"
+    end
+    if request[:project_type] and request[:project_type] == "bmi"
+      @proj_type = @proj_type + "bmi|"
     end
     @res['project_type'] = @proj_type
 
