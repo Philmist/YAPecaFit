@@ -21,6 +21,7 @@
       = hidden_field_tag(:start_date, :value => @res['start_date'].iso8601)
       = hidden_field_tag(:end_date, :value => @res['end_date'].iso8601)
       = hidden_field_tag(:project_open, :value => (@res['project_type']['open'] ? 'true' : 'false'))
+      = hidden_field_tag(:project_type, :value => (@res['project_type']['bmi'] ? 'bmi' : ''))
       = hidden_field_tag(:project_confirmed, :value => "true")
     = submit_tag "送信", :class => "btn btn-default"
 
