@@ -120,5 +120,18 @@ Yapecafit::App.controllers :project do
       render 'project/confirm'
     end
   end
+
+  get :delete do
+    proj = Project.all
+    @opt_array = []
+    for i in proj
+      unless current_account.role['admin'] or current_account.uid == i.creator_twitter_id.to_s
+        next
+      end
+      @opt_array.push([i.project_name, i.id.to_s])
+    end
+    render 'project/delete'
+  end
+
 end
 

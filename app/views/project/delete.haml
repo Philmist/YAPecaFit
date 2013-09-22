@@ -1,0 +1,14 @@
+-# vim: fileencoding=utf-8
+.container
+  - if @error_list and @error_list.length > 0
+    %ul.alert#form_error_list
+      - for i in @error_list
+        %li.alert-info= i
+.container
+  - form_tag '/project/delete', :id => "project_delete_form" do
+    %legend プロジェクト削除
+    .form-group
+      = label_tag "プロジェクトリスト", :for => "project_list"
+      = select_tag :project_select, @opt_array, :id => "project_list", :class => "form-control"
+    = submit_tag "削除", :class => "input-group-button btn btn-default"
+
