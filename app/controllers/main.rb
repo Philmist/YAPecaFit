@@ -51,10 +51,12 @@ Yapecafit::App.controllers :main do
       @type = u.type ? u.type : ""
       @comment = u.comment ? u.comment : ""
       @account_id = u.id.to_s
+      @height = nil
     else
       @type = ""
       @comment = ""
       @account_id = ""
+      @height = u.height
     end
     render 'main/user'
   end
