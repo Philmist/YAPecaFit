@@ -141,6 +141,13 @@ Yapecafit::App.controllers :project do
       end
       render 'project/delete_confirm'
     else  # CONFIRMED to delete
+      del_target = Project.find(BSON::ObjectId.from_string(request[:project_id]))
+      unless del_target
+        redirect '/project/delete'
+      end
+      @del_project = {'name' => del_target.project_name, 'creator' => del_target.creator_twitter_name}
+      Project.destroy(BSON::ObjectId.from_string(request[:project_id]))
+      render 'project/deleted'
     end
   end
 

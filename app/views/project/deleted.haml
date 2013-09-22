@@ -1,0 +1,10 @@
+-# vim: fileencoding=utf-8
+.container
+  %h2 プロジェクト削除:完了
+  %p 次のプロジェクトの削除が完了しました。
+  %dl
+    %dt プロジェクト名
+    %dd= @del_project['name']
+    %dt 作成者名
+    %dd= @del_project['creator']
+
