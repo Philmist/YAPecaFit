@@ -133,5 +133,16 @@ Yapecafit::App.controllers :project do
     render 'project/delete'
   end
 
+  post :delete do
+    unless request[:delete_confirmed]  # need confirm to delete
+      @project = Project.find(BSON::ObjectId.from_string(request[:project_select]))
+      unless @project
+        redirect '/project/delete'
+      end
+      render 'project/delete_confirm'
+    else  # CONFIRMED to delete
+    end
+  end
+
 end
 
