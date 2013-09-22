@@ -30,7 +30,7 @@
         直近5回の記録
       %ul#weight_list
         - for i in @weight_list[0, 5]
-          %li.weight_items= i.weight.to_s + "kg" + (@height ? " " : ("(BMI:"+ (((i.weight)/((@height/100.0)**2.0) ).round(2).to_s) +")") ) +" at"  + (i.datetime ? i.datetime : "?")
+          %li.weight_items= i.weight.to_s + "kg" + (@height and i.weight ? ("(BMI:"+ (((i.weight)/((@height/100.0)**2.0) ).round(2).to_s) +")") : " " ) + " at"  + (i.datetime ? i.datetime : "?")
     .tab-pane#userurl
       %h2
         紹介用URL
