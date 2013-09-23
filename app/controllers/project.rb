@@ -92,7 +92,7 @@ Yapecafit::App.controllers :project do
     # check unfinished project
     if p
       for i in p
-        unless i[:project_type]["completed"]
+        if (not i[:project_type]["completed"]) and (not current_account.role['admin'])
           @error_list.push("まだ終了していないプロジェクトがあります")
           break
         end
