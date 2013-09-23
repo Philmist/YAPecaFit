@@ -8,5 +8,4 @@ vendor/gems/*
 db/*.db
 .*.sw*
 *~
-Gemfile.lock
 
