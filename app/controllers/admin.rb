@@ -42,7 +42,7 @@ Yapecafit::App.controllers :admin do
   get :projectdelete do
     @title = "プロジェクト削除"
     proj_list = Project.all
-    render 'admin/projectdelete'
+    redirect '/project/delete', 301
   end
 
   post :userrole do
