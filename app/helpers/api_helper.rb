@@ -1,3 +1,4 @@
+# vim: fileencoding=utf-8
 # Helper methods defined here can be accessed in any controller or view in the application
 
 Yapecafit::App.helpers do
