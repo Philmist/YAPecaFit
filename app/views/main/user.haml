@@ -10,11 +10,11 @@
     %ul.nav.nav-tabs
       %li.active
         %a{:href => "#graph", :data => {:toggle => "tab"}} 体重
-      %li
+      -#%li
         %a{:href => "#graph_bmi", :data => {:toggle => "tab"}} BMI
     .tab-content
       .tab-pane.active#graph
-      .tab-pane#graph_bmi
+      -#.tab-pane#graph_bmi
 
 - content_for :include do
   =javascript_include_tag 'weight_graph'
