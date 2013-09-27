@@ -4,7 +4,6 @@ class Followstatus
 
   # key <name>, <type>
   key :twitter_id, Integer
-  key :follow_request_time, Time  # Time of sending follow request
   key :status, String  # Should be "requested", "denied", "followed"
   timestamps!
 end
