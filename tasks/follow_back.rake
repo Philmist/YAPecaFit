@@ -12,9 +12,9 @@ task :followback => :environment do
     :oauth_token_secret => ENV['STAFF_ACC_SEC']
   )
 
-  followers = cl.follower_ids()
-  friends = cl.friend_ids()
-  requests = cl.friendships_outgoing()
+  followers = cl.follower_ids().all()
+  friends = cl.friend_ids().all()
+  requests = cl.friendships_outgoing().all()
   
   reqs = []  # Target to send follow request
 
