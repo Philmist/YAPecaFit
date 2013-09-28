@@ -1,6 +1,6 @@
 # vim: fileencoding=utf-8
 
-require 'rubygems'
+#require 'rubygems'
 require 'twitter'
 require 'mongo_mapper'
 
