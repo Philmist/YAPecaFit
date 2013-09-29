@@ -62,25 +62,37 @@ task :readbody => :environment do
     if str_to_height(i.text)
       res = res + str_to_height(i.text).to_s + "cm "
       unless User.first(:twitter_id => i.user.id)  # New User
-        unless str_to_weight(i.text)
-          next
-        end
         data = User.new(:twitter_id => i.user.id,
                         :username => i.user.name,
                         :height => str_to_height(i.text),
                         :comment => "")
+        if data.save
+          res = res + "(N) "
+          new_count = new_count + 1
+        end
+        unless str_to_weight(i.text)
+          next
+        end
         c = Weights.new(:twitter_id => i.user.id,
                         :datetime => utc_to_jststr( i.created_at ),
                         :weight => str_to_weight(i.text),
                         :tweet_id => i.id,
                         :user => data )
-        if data.save and c.save
-          res = res + "(N) " + str_to_weight(i.text).to_s + "kg (N)"
-          new_count = new_count + 1
+        if c.save
+          res = res + str_to_weight(i.text).to_s + "kg (N)"
         end
       else  # Exist User
         if User.set({:twitter_id => i.user.id}, :username => i.user.name, :height => str_to_height(i.text))
           res = res + "(U) "
+        end
+        if str_to_weight(i.text)
+          c = User.last(:twitter_id => i.user.id)
+          data = Weights.new(:twitter_id => i.user.id,
+                             :datetime => utc_to_jststr( i.created_at ),
+                             :weight => str_to_weight(i.text),
+                             :tweet_id => i.id,
+                             :user => c )
+          res = res + "(UW) " if data.save
         end
       end
     elsif str_to_weight(i.text)
