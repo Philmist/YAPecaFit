@@ -38,3 +38,5 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'moji'
 
+gem 'newrelic_rpm'
+
