@@ -62,6 +62,9 @@ task :readbody => :environment do
     if str_to_height(i.text)
       res = res + str_to_height(i.text).to_s + "cm "
       unless User.first(:twitter_id => i.user.id)  # New User
+        unless str_to_weight(i.text)
+          next
+        end
         data = User.new(:twitter_id => i.user.id,
                         :username => i.user.name,
                         :height => str_to_height(i.text),
