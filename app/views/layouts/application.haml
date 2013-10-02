@@ -1,4 +1,4 @@
--# coding: utf-8
+-# vim: filencoding: utf-8
 
 !!! 5
 %html
@@ -21,14 +21,6 @@
           %ul.nav.navbar-nav
             %li#nav_link_to_top
               %a{:href => '/about'}YAPecaFitについて
-            %li#nav_link_to_userpage
-              - unless access_control.allowed?(current_account, '/user')
-                %a{:href=>'#'}ユーザーページ
-              - else
-                %a{:href => '/user'}ユーザーページ
-            - if access_control.allowed?(current_account, '/admin')
-              %li#nav_link_to_adminpage
-                %a{:href => '/admin'}管理者
             %li.dropdown#project_dropdown
               %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
                 プロジェクト
@@ -40,18 +32,30 @@
                     %li#nav_link_to_project_create
                       %a{:href => "/project/create"}作成
           %ul.nav.navbar-nav.navbar-right
-            %p.navbar-text
-              - unless access_control.allowed?(current_account, '/user')
-                ログインしていません
-              - else
-                ようこそ、
-                =(current_account.name ? current_account.name : "名無し")
-                さん
-            %p.btn.btn-default.navbar-btn
-              - if access_control.allowed?(current_account, '/user')
-                %a{:href => '/logout'}ログアウト
-              - else
-                =link_to('Twitterでログイン', '/auth/twitter')
+            %li.dropdown#user_dropdown
+              %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+                - unless access_control.allowed?(current_account, '/user')
+                  ログインしていません
+                - else
+                  ようこそ、
+                  =(current_account.name ? current_account.name : "名無し")
+                  さん
+                %b.caret
+              %ul.dropdown-menu
+                %li#nav_link_to_userpage
+                  - unless access_control.allowed?(current_account, '/user')
+                    %a{:href=>'#'}ユーザーページ
+                  - else
+                    %a{:href => '/user'}ユーザーページ
+                - if access_control.allowed?(current_account, '/admin')
+                  %li#nav_link_to_adminpage
+                    %a{:href => '/admin'}管理者
+                %li.divider
+                %li#logout_login
+                  - if access_control.allowed?(current_account, '/user')
+                    %a{:href => '/logout'}ログアウト
+                  - else
+                    =link_to('Twitterでログイン', '/auth/twitter')
     #main
       =yield
     #footer
