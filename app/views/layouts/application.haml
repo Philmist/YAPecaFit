@@ -1,4 +1,4 @@
--# vim: filencoding: utf-8
+-# vim: fileencoding: utf-8
 
 !!! 5
 %html
@@ -42,10 +42,8 @@
                   さん
                 %b.caret
               %ul.dropdown-menu
-                %li#nav_link_to_userpage
-                  - unless access_control.allowed?(current_account, '/user')
-                    %a{:href=>'#'}ユーザーページ
-                  - else
+                - if access_control.allowed?(current_account, '/user')
+                  %li#nav_link_to_userpage
                     %a{:href => '/user'}ユーザーページ
                 - if access_control.allowed?(current_account, '/admin')
                   %li#nav_link_to_adminpage
