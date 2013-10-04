@@ -37,6 +37,22 @@ Yapecafit::App.controllers :project do
       pass
     end
     @title = @project.project_name + " | " + "プロジェクト詳細"
+    @result = []
+    for i in @project.project_results
+      res = {:twitter_name => i.twitter_name,
+             :initial_weight => i.initial_weight,
+             :final_weight => i.final_weight,
+             :result => i.result}
+      if @project.project_type['bmi']
+        u = User.where(:twitter_id => i.twitter_id).first
+        unless u
+          next
+        end
+        res[:initial_bmi] = calc_bmi(u.height, i.initial_weight)
+        res[:final_bmi] = calc_bmi(u.height, i.final_weight)
+      end
+      @result.push(res)
+    end
     render 'project/list'
   end
 

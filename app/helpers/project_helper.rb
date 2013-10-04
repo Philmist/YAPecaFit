@@ -21,4 +21,12 @@ Yapecafit::App.helpers do
     @title = "プロジェクト一覧"
   end
 
+  def calc_bmi(height, weight)
+    if height and weight and (not height == 0.0)
+      (weight) / ((height / 100.0)**2.0)
+    else
+      nil
+    end
+  end
+
 end
