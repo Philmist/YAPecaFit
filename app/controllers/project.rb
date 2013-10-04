@@ -32,7 +32,7 @@ Yapecafit::App.controllers :project do
   end
 
   get :show, :with => [:id] do
-    @project = Project.find(BSON::ObjectId.from_string(params[:id]))
+    @project = Project.find(BSON::ObjectId.from_string(params[:id])) rescue nil
     @title = @project.project_name + " | " + "プロジェクト詳細"
     unless @project
       pass
@@ -135,13 +135,13 @@ Yapecafit::App.controllers :project do
 
   post :delete do
     unless request[:delete_confirmed]  # need confirm to delete
-      @project = Project.find(BSON::ObjectId.from_string(request[:project_select]))
+      @project = Project.find(BSON::ObjectId.from_string(request[:project_select])) rescue nil
       unless @project
         redirect '/project/delete'
       end
       render 'project/delete_confirm'
     else  # CONFIRMED to delete
-      del_target = Project.find(BSON::ObjectId.from_string(request[:project_id]))
+      del_target = Project.find(BSON::ObjectId.from_string(request[:project_id])) rescue nil
       unless del_target
         redirect '/project/delete'
       end
