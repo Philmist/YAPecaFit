@@ -40,7 +40,7 @@ Yapecafit::App.controllers :project do
     render 'project/list'
   end
 
-  get :show do
+  get :show, :map => "/project/show/*" do
     @alert = "そのプロジェクトは存在しません"
     show_project()
     render 'project/index'
