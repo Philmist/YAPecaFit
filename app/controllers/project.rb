@@ -33,10 +33,10 @@ Yapecafit::App.controllers :project do
 
   get :show, :with => [:id] do
     @project = Project.find(BSON::ObjectId.from_string(params[:id])) rescue nil
-    @title = @project.project_name + " | " + "プロジェクト詳細"
     unless @project
       pass
     end
+    @title = @project.project_name + " | " + "プロジェクト詳細"
     render 'project/list'
   end
 
