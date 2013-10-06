@@ -24,6 +24,9 @@ task :followback => :environment do
       unless stat  # not found
         next
       end
+      if stat.status["followed"]
+        next
+      end
       stat.status = "followed"
       puts stat.twitter_id.to_s + " is now friend." if stat.save
     else  # My Account is NOT followed
@@ -31,9 +34,11 @@ task :followback => :environment do
         next
       end
       stat = Followstatus.where(:twitter_id => i).first
-      if stat  # Follow request is denied by target user
+      if stat and stat.status["requested"]  # Follow request is denied by target user
         stat.status = "denied"
         puts "Follow requests to " + stat.twitter_id.to_s + " is denied." if stat.save
+      elsif stat.status["denied"]
+        next
       else  # Follow request is not send
         reqs.push(i)
       end
