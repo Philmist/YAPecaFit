@@ -6,23 +6,31 @@
       %li.alert-info= @alert
 
 .container
-  %h2 プロジェクト一覧
-  - if @project and @project.length > 0
-    - for i in @project
-      %h3
-        %a{:href => ("/project/show/"+i.id.to_s)}= i.project_name
-      %dl.dl-horizontal
-        %dt 作った人
-        %dd= i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"
-        %dt 開始日
-        %dd= (i[:start_date] ? i[:start_date].to_s : "なし")
-        %dt 終了日
-        %dd= (i[:end_date] ? i[:end_date].to_s : "なし")
-        %dt 種別
-        %dd= (i[:project_type]['bmi'] ? "BMI" : "体重増減幅")
-        %dt 状態
-        %dd= (i[:project_type]['open'] ? "公開" : "非公開") + "," + (i[:project_type]['completed'] ? "完了" : "実行中")
-  - else
-    %p プロジェクトはありません
-
-
+  .row
+    .col-md-6
+      %h2 プロジェクト一覧
+      - if @project and @project.length > 0
+        - for i in @project
+          %h3
+            %a{:href => ("/project/show/"+i.id.to_s)}= i.project_name
+          %dl.dl-horizontal
+            %dt 作った人
+            %dd= i[:creator_twitter_name] + " ( " + i[:creator_twitter_id].to_s + ")"
+            %dt 開始日
+            %dd= (i[:start_date] ? i[:start_date].to_s : "なし")
+            %dt 終了日
+            %dd= (i[:end_date] ? i[:end_date].to_s : "なし")
+            %dt 種別
+            %dd= (i[:project_type]['bmi'] ? "BMI" : "体重増減幅")
+            %dt 状態
+            %dd= (i[:project_type]['open'] ? "公開" : "非公開") + "," + (i[:project_type]['completed'] ? "完了" : "実行中")
+      - else
+        %p プロジェクトはありません
+    .col-md-4
+      %h2 プロジェクトって？
+      %p プロジェクトとはYAPecaFitに参加している皆さんで一定期間の体重の増減を競うイベントです。現在のところ2つの種別があります。
+      %dl
+        %dt 体重増減幅
+        %dd 旧PecaFitのように、単純な体重増減幅を競います。体重が増えたか、あるいは減ったかということは関係なく、単純に幅のみが対象です。
+        %dt BMI
+        %dd 標準体重であるBMI(ボディマス指数)22にどれだけ近づいたかを競います。
