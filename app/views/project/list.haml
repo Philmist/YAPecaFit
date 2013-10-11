@@ -8,10 +8,10 @@
       %dd= @project.creator_twitter_name
       - if @project.start_date
         %dt 開始日
-        %dd= @project.start_date.rfc2822
+        %dd= utc_to_jststr(@project.start_date)
       - if @project.end_date
         %dt 終了日
-        %dd= @project.end_date.rfc2822
+        %dd= utc_to_jststr(@project.end_date)
       - if @project.project_type
         %dt 種別
         %dd= @project.project_type['bmi'] ? "BMI増減" : "体重増減幅"
