@@ -54,27 +54,28 @@
               %th 結果
           %tbody
             - for i in @result
-              %td= i[:twitter_name]
-              - if i[:initial_weight] and not i[:initial_weight] == 0.0
-                %td= i[:initial_weight].round(1).to_s
-              - else
-                %td 値無し
-              - if i[:initial_bmi] and not i[:initial_bmi] == 0.0
-                %td= i[:initial_bmi].round(2).to_s
-              - else
-                %td 値無し
-              - if i[:final_weight] and not i[:final_weight] == 0.0
-                %td= i[:final_weight].round(1).to_s
-              - else
-                %td 値無し
-              - if i[:final_bmi] and not i[:final_bmi] == 0.0
-                %td= i[:final_bmi].round(2).to_s
-              - else
-                %td 値無し
-              - if i[:result]
-                %td= i[:result].round(1).to_s
-              - else
-                %td 値無し
+              %tr
+                %td= i[:twitter_name]
+                - if i[:initial_weight] and not i[:initial_weight] == 0.0
+                  %td= i[:initial_weight].round(1).to_s
+                - else
+                  %td 値無し
+                - if i[:initial_bmi] and not i[:initial_bmi] == 0.0
+                  %td= i[:initial_bmi].round(2).to_s
+                - else
+                  %td 値無し
+                - if i[:final_weight] and not i[:final_weight] == 0.0
+                  %td= i[:final_weight].round(1).to_s
+                - else
+                  %td 値無し
+                - if i[:final_bmi] and not i[:final_bmi] == 0.0
+                  %td= i[:final_bmi].round(2).to_s
+                - else
+                  %td 値無し
+                - if i[:result]
+                  %td= i[:result].round(1).to_s
+                - else
+                  %td 値無し
 
 
 :javascript
