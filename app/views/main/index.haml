@@ -16,6 +16,13 @@
       %p 使い方はメニューから「YAPecaFitについて」をご覧ください。
       %h2 最新のTweet取得日時
       %p= @updatetime
+      %h2 開催中のプロジェクト
+      %ul
+      - if @project.length > 0
+        - for i in @project
+          %li= i.project_name
+      - else
+        %li 無し
     .col-md-6
       %a{:class => "twitter-timeline", :href => "https://twitter.com/YAPecaFit", "data-widget-id" => "372700703505936384"}@YAPecaFitからのツイート
       :javascript

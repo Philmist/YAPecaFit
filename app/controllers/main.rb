@@ -27,6 +27,14 @@ Yapecafit::App.controllers :main do
   get :index, :map => '/' do
     @title = "トップページ"
     @updatetime = utc_to_jststr(Getlog.all.last.created_at)
+    p = Project.where(:start_date.lte => (Time.now + 60*60*9)).all
+    @project = []
+    for i in p
+      if i[:project_type]['completed'] or (not i[:project_type]['open'])
+        next
+      end
+      @project.push(i)
+    end
     render 'main/index'
   end
 
