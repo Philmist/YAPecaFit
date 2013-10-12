@@ -37,7 +37,7 @@ task :followback => :environment do
       if stat and stat.status["requested"]  # Follow request is denied by target user
         stat.status = "denied"
         puts "Follow requests to " + stat.twitter_id.to_s + " is denied." if stat.save
-      elsif stat.status["denied"]
+      elsif stat and stat.status["denied"]
         next
       else  # Follow request is not send
         reqs.push(i)
