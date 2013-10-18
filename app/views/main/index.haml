@@ -20,7 +20,7 @@
       %ul
       - if @project.length > 0
         - for i in @project
-          %li= i.project_name
+          %li= link_to i.project_name, ("/project/show/" + i.id.to_s)
       - else
         %li 無し
     .col-md-6
