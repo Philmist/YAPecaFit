@@ -10,6 +10,10 @@
       の体重推移
     #graph
 
+.container
+  %h3 コメント
+  %p= @user.comment ? @user.comment : "設定されていません"
+
 %noscript
   %ul#weight_list
     - @weights.each do |i|
