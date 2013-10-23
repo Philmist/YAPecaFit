@@ -43,11 +43,16 @@ Yapecafit::App.controllers :project do
              :initial_weight => i.initial_weight,
              :final_weight => i.final_weight,
              :result => i.result}
+      u = User.where(:twitter_id => i.twitter_id).first
+      unless u
+        next
+      end
+      unless u.type and u.type['forbidden']
+        res[:user_id] = nil
+      else
+        res[:user_id] = u.id.to_s
+      end
       if @project.project_type['bmi']
-        u = User.where(:twitter_id => i.twitter_id).first
-        unless u
-          next
-        end
         res[:initial_bmi] = calc_bmi(u.height, i.initial_weight)
         res[:final_bmi] = calc_bmi(u.height, i.final_weight)
       end

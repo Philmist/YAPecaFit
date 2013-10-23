@@ -29,7 +29,10 @@
           %tbody
             - for i in @result
               %tr
-                %td= i[:twitter_name]
+                - unless i[:user_id]
+                  %td= i[:twitter_name]
+                - else
+                  %td= link_to i[:twitter_name], "/show/"+i[:user_id]
                 - if i[:initial_weight] and not i[:initial_weight] == 0.0
                   %td= i[:initial_weight].round(1).to_s
                 - else
@@ -55,7 +58,10 @@
           %tbody
             - for i in @result
               %tr
-                %td= i[:twitter_name]
+                - unless i[:user_id]
+                  %td= i[:twitter_name]
+                - else
+                  %td= link_to i[:twitter_name], "/show/"+i[:user_id]
                 - if i[:initial_weight] and not i[:initial_weight] == 0.0
                   %td= i[:initial_weight].round(1).to_s
                 - else
