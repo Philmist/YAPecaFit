@@ -47,10 +47,10 @@ Yapecafit::App.controllers :project do
       unless u
         next
       end
-      unless u.type and u.type['forbidden']
-        res[:user_id] = nil
-      else
+      if u.type and (not u.type['forbidden'])
         res[:user_id] = u.id.to_s
+      else
+        res[:user_id] = nil
       end
       if @project.project_type['bmi']
         res[:initial_bmi] = calc_bmi(u.height, i.initial_weight)
