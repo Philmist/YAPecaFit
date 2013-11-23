@@ -79,7 +79,7 @@ module Yapecafit
     access_control.roles_for :users do |role|
       role.allow "/user"
       role.allow "/setting"
-      #role.allow "/project/create"
+      role.allow "/project/create"
       #role.allow "/project/delete"
     end
 
