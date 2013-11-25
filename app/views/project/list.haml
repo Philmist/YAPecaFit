@@ -23,8 +23,8 @@
           %thead
             %tr
               %th 名前
-              %th 開始体重
-              %th 最終体重
+              -#%th 開始体重
+              -#%th 最終体重
               %th 結果
           %tbody
             - for i in @result
@@ -33,14 +33,16 @@
                   %td= i[:twitter_name]
                 - else
                   %td= link_to i[:twitter_name], "/show/"+i[:user_id]
-                - if i[:initial_weight] and not i[:initial_weight] == 0.0
+                -#
+                  - if i[:initial_weight] and not i[:initial_weight] == 0.0
                   %td= i[:initial_weight].round(1).to_s
-                - else
-                  %td 値無し
-                - if i[:final_weight] and not i[:final_weight] == 0.0
+                  - else
+                    %td 値無し
+                -#
+                  - if i[:final_weight] and not i[:final_weight] == 0.0
                   %td= i[:final_weight].round(1).to_s
-                - else
-                  %td 値無し
+                  - else
+                    %td 値無し
                 - if i[:result]
                   %td= i[:result].round(1).to_s
                 - else
@@ -50,9 +52,9 @@
           %thead
             %tr
               %th 名前
-              %th 開始体重
+              -#%th 開始体重
               %th 開始BMI
-              %th 最終体重
+              -#%th 最終体重
               %th 最終BMI
               %th 結果
           %tbody
@@ -62,18 +64,20 @@
                   %td= i[:twitter_name]
                 - else
                   %td= link_to i[:twitter_name], "/show/"+i[:user_id]
-                - if i[:initial_weight] and not i[:initial_weight] == 0.0
+                -#
+                  - if i[:initial_weight] and not i[:initial_weight] == 0.0
                   %td= i[:initial_weight].round(1).to_s
-                - else
-                  %td 値無し
+                  - else
+                    %td 値無し
                 - if i[:initial_bmi] and not i[:initial_bmi] == 0.0
                   %td= i[:initial_bmi].round(2).to_s
                 - else
                   %td 値無し
-                - if i[:final_weight] and not i[:final_weight] == 0.0
+                -#
+                  - if i[:final_weight] and not i[:final_weight] == 0.0
                   %td= i[:final_weight].round(1).to_s
-                - else
-                  %td 値無し
+                  - else
+                    %td 値無し
                 - if i[:final_bmi] and not i[:final_bmi] == 0.0
                   %td= i[:final_bmi].round(2).to_s
                 - else
