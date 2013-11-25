@@ -5,7 +5,7 @@ require 'twitter'
 require 'mongo_mapper'
 
 task :followback => :environment do
-  cl = Twitter::Client.new(
+  cl = Twitter::REST::Client.new(
     :consumer_key => ENV['STAFF_CONS_KEY'],
     :consumer_secret => ENV['STAFF_CONS_SEC'],
     :oauth_token => ENV['STAFF_ACC_KEY'],
