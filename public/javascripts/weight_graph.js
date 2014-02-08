@@ -1,4 +1,3 @@
-// encoding:utf-8
 
 $(document).ready(function () {
   var target_url = '/api/weight/' + $("#twitter_uid")[0].innerHTML;
@@ -17,9 +16,6 @@ $(document).ready(function () {
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
   var yAxis = d3.svg.axis().scale(y).orient("left");
 
-  var line = d3.svg.line().x( function(d) { return x(d.date); }
-    ).y( function(d) { return y(d.weight); });
-
   var svg = d3.select("#graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -28,17 +24,18 @@ $(document).ready(function () {
 
   d3.json(target_url, function(err, data) {
 
-    color.domain();
     y.domain([0, d3.max(data, function(d) { return d[1]; })]);  // weight
     x.domain(d3.extent(data, function(d) { return d[0]; }));  // date
-    var weights = color.domain().map(function(c) {
-      return {
-        name: c,
-        values: data.map(function(d) {
-          return {date: d[0], weight: d[1]};
-        })
-      };
-    });
+
+    var line = d3.svg.line().x(function(d) {
+      console.log("Plotting x: "+ d[0]);
+      return x(d[0]);
+    })
+    .y(function(d) {
+      console.log("Plotting y: "+ d[1]);
+      return y(d[1]);
+    }
+    );
 
     // Render x axis
     svg.append("g").attr("class", "x axis").attr("transform", "translate(0,"+height+")").call(xAxis);
@@ -64,13 +61,8 @@ $(document).ready(function () {
       .text("tooltip");
 
     // Render data
-    var weight = svg.selectAll(".weight")
-      .data(weights)
-      .enter().append("g")
-      .attr("class", "weight");
+    svg.append("path").attr("d", line(data));
 
-    weight.append("path")
-      .attr("class", "line")
-      .attr("d", line);
+  });
 
 });

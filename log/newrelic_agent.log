@@ -29,3 +29,47 @@
 [02/08/14 22:37:11 +0900 sycom2d (4712)] INFO : Finished instrumentation
 [02/08/14 22:37:11 +0900 sycom2d (4712)] WARN : Failed to determine processor count, assuming 1
 [02/08/14 22:37:28 +0900 sycom2d (4712)] INFO : Doing deferred dependency-detection before Rack startup
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Starting the New Relic agent in "development" environment.
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Reading configuration from config/newrelic.yml
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Enabling the Request Sampler.
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Environment: development
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : No known dispatcher detected.
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Application: YAPecaFit
+[02/08/14 22:51:37 +0900 sycom2d (4600)] WARN : Agent configured not to send data in this environment.
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Installing Net instrumentation
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Installing Sinatra instrumentation
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Installing Padrino instrumentation
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Installing deferred Rack instrumentation
+[02/08/14 22:51:37 +0900 sycom2d (4600)] INFO : Finished instrumentation
+[02/08/14 22:51:37 +0900 sycom2d (4600)] WARN : Failed to determine processor count, assuming 1
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : Starting the New Relic agent in "development" environment.
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : Reading configuration from config/newrelic.yml
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : Enabling the Request Sampler.
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : Environment: development
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : No known dispatcher detected.
+[02/08/14 23:00:19 +0900 sycom2d (3328)] INFO : Application: YAPecaFit
+[02/08/14 23:00:19 +0900 sycom2d (3328)] WARN : Agent configured not to send data in this environment.
+[02/08/14 23:00:20 +0900 sycom2d (3328)] INFO : Installing Net instrumentation
+[02/08/14 23:00:20 +0900 sycom2d (3328)] INFO : Installing Sinatra instrumentation
+[02/08/14 23:00:20 +0900 sycom2d (3328)] INFO : Installing Padrino instrumentation
+[02/08/14 23:00:20 +0900 sycom2d (3328)] INFO : Installing deferred Rack instrumentation
+[02/08/14 23:00:20 +0900 sycom2d (3328)] INFO : Finished instrumentation
+[02/08/14 23:00:20 +0900 sycom2d (3328)] WARN : Failed to determine processor count, assuming 1
+[02/08/14 23:00:24 +0900 sycom2d (3328)] INFO : Doing deferred dependency-detection before Rack startup
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Starting the New Relic agent in "development" environment.
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : To prevent agent startup add a NEWRELIC_ENABLE=false environment variable or modify the "development" section of your newrelic.yml.
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Reading configuration from config/newrelic.yml
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Enabling the Request Sampler.
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Environment: development
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : No known dispatcher detected.
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Application: YAPecaFit
+[02/08/14 23:01:25 +0900 sycom2d (932)] WARN : Agent configured not to send data in this environment.
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Installing Net instrumentation
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Installing Sinatra instrumentation
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Installing Padrino instrumentation
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Installing deferred Rack instrumentation
+[02/08/14 23:01:25 +0900 sycom2d (932)] INFO : Finished instrumentation
+[02/08/14 23:01:25 +0900 sycom2d (932)] WARN : Failed to determine processor count, assuming 1
+[02/08/14 23:01:34 +0900 sycom2d (932)] INFO : Doing deferred dependency-detection before Rack startup
