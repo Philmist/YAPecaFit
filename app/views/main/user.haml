@@ -17,8 +17,8 @@
       -#.tab-pane#graph_bmi
 
 - content_for :include do
+  =javascript_include_tag 'd3.v3.min.js'
   =javascript_include_tag 'weight_graph'
-  =javascript_include_tag 'bmi_graph'
 
 .container
   %ul.nav.nav-tabs
