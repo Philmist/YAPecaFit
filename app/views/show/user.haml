@@ -20,4 +20,5 @@
       %li= i[:weight].to_s + "kg at " + i[:datetime]
 
 - content_for :include do
+  =javascript_include_tag 'd3.v3.min.js'
   =javascript_include_tag 'weight_graph'
